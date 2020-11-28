@@ -1,0 +1,20 @@
+Canada
+Newfoundland and Labrador, 11.0, 53.1355, -57.6604
+Prince Edward Island, 1.7, 46.5107, -63.4168
+Nova Scotia, 17.0, 44.6820, -63.7443
+New Brunswick, 13.2, 46.5653, -66.4619
+Quebec, 82.6, 46.8139, -71.2080
+Ontario, 165.0, 51.2538, -85.3232
+Manitoba, 21.8,	56.415211, -98.739075
+Saskatchewan, 76.4, 55.000000, -106.000000
+Alberta, 272.6, 55.000000, -115.000000
+British Columbia, 65.5, 53.726669, -127.647621
+Yukon, 0.6, 64.000000, -135.000000
+Northwest Territories, 1.2, 70.453262, -86.798981
+Nunavut, 0.7, 70.2998, -83.1076
+
+United States of America
+pass
+
+Mexico
+pass
