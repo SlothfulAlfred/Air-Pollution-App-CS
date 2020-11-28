@@ -10,7 +10,6 @@
 #----------------------------------------------------
 import os
 import sys
-sys.path.append("D:\\Visual Studio Projects\\Projects\\AirPollutionCS\\Classes")
 import country
 import region
 filename = "data.txt"
