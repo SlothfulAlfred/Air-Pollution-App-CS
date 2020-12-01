@@ -1,5 +1,3 @@
-import os, sys
-sys.path.append("D:/Visual Studio Projects/Projects/AirPollutionCS/Classes/")
 import unittest
 import country
 
