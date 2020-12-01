@@ -1,6 +1,4 @@
 import unittest
-import os, sys
-sys.path.append("D:/Visual Studio Projects/Projects/AirPollutionCS/Classes/")
 import region
 
 class Test_Region(unittest.TestCase):
