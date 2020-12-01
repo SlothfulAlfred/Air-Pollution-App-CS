@@ -50,11 +50,11 @@ class Region():
         ValueError
             If the emissions are below zero 
         '''
-        if em < 0.00:
+        if float(em) < 0.00:
             raise ValueError("Cannot have negative emissions")
-        self.emissions = em
-        self.lat = lat
-        self.lon = lon
+        self.emissions = float(em)
+        self.lat = float(lat)
+        self.lon = float(lon)
         self.name = name
 
 
@@ -79,7 +79,7 @@ class Region():
         tuple:
             latitude and longitude coordinates of the region
         '''
-        return tuple(self.lat, self.lon)
+        return (self.lat, self.lon)
 
     def getName(self) -> str:
         '''
