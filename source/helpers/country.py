@@ -1,3 +1,5 @@
+import region as reg
+import logging
 
 class Country():
     '''
@@ -11,24 +13,72 @@ class Country():
     name: string
         Name of the country
 
+    Methods
+    -------------------------------
+    getEmisssions() -> float
+        Returns the sum of the emissions of the affiliated regions
+    getName() -> str
+        Returns the name of the country
+    getRegions -> list
+        Returns the names of the affiliated regions as a list
+
     '''
-    def __init__(self, name, file = None):
+    def __init__(self, file = None):
         '''
+        Constructor to initialize a country object and it's corresponding region objects
+
+        Parameters
+        --------------------------------
+        file: string
+            the name of the input file that will be used to initialize the objects
+            defaults to None
+        
+        Raises
+        ----------------------------------
+        FileNotFoundError
+            If no file is provided
         '''
-        regions = []
-        self.name = name
+        self.regions = []
         if file:
             with open(file, 'r') as f:
                 self.name = f.readline().strip(' \n')
-                while(f.readline() != '\n'):
+                q = f.readline().strip(' \n').split(',')
+                while(len(q) > 1):
+                    self.regions.append(reg.Region(q[0], q[1], q[2], q[3]))
                     q = f.readline().strip(' \n').split(',')
-                    regions.append(Region(q[0], float(q[1]), float(q[2]), float(q[3])))
+        else:
+            raise FileNotFoundError(logging.log("File not provided"))
 
     def getEmissions(self) -> float:
-        return (sum(x.getEmissions() for x in self.regions))
+        '''
+        returns the emissions of the country
+
+        Returns
+        -----------------------------
+        float
+            sum of the emissions of the afilliated regions
+        '''
+        return sum(x.getEmissions() for x in self.regions)
 
     def getName(self) -> str:
+        '''
+        returns the name of the country
+
+        Returns
+        ----------------------------------
+        string
+            the name of the country
+        '''
         return self.name
 
-    def getRegions(self) -> str:
-        yield (x.getName() for x in self.regions)
+    def getRegions(self) -> list:
+        '''
+        returns a list of the names of the affiliated regions
+        
+        Returns
+        --------------------------------
+        list
+            a list of the names of the affiliated regions
+        '''
+        return (x.getName() for x in self.regions)
+
