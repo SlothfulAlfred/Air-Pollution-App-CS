@@ -14,58 +14,57 @@ Northwest Territories, 1.2, 70.453262, -86.798981
 Nunavut, 0.7, 70.2998, -83.1076
 
 United States of America
-Alabama, 108.3, 
-Alaska, 34.1,  
-Arizona, 85.6, 
-Arkansas, 63.9, 
-California, 358.6, 
-Colorado, 87.0, 
-Connecticut, 33.4, 
-Delaware, 12.3, 
+Alabama, 108.3, 32.318230, -86.902298
+Alaska, 34.1, 66.160507, -153.369141
+Arizona, 85.6, 34.048927, -111.093735
+Arkansas, 63.9, 34.799999, -92.199997
+California, 358.6, 36.778259, -119.417931
+Colorado, 87.0, 39.113014, -105.358887
+Connecticut, 33.4, 41.599998, -72.699997
+Delaware, 12.3, 39.000000, -75.500000
 District of Columbia, 2.6, 
-Florida, 226.5, 
-Georgia, 131.9, 
-Hawaii, 17.6, 
-Idaho, 18.4, 
-Illinois, 201.1, 
-Indiana, 175.8, 
-Iowa, 76.3, 
-Kansas, 57.9, 
-Kentucky, 113.6, 
-Louisiana, 226.4, 
-Maine, 15.4, 
-Maryland, 51.6, 
-Massachusetts, 63.3, 
-Michigan, 151.8, 
-Minnesota, 87.9, 
-Mississippi, 67.4, 
-Missouri, 122.4,  
-Montana, 30.3, 
-Nebraska, 47.7, 
-Nevada, 36.2, 
-New Hampshire, 13.4, 
-New Jersey, 101.0, 
-New Mexico, 48.7, 
-New York, 156.7, 
-North Carolina, 115.0, 
-North Dakota, 56.2, 
-Ohio, 204.3, 
-Oklahoma, 92.7, 
-Oregon, 38.3, 
-Pennsylvania, 215.3, 
-Rhode Island, 10.0, 
-South Carolina, 68.8, 
-South Dakota, 14.5, 
-Tennessee, 97.6, 
-Texas, 706.5, 
-Utah, 58.2, 
-Vermont, 5.8, 
-Virginia, 97.9, 
-Washington, 78.2, 
-West Virginia, 90.8, 
-Wisconsin, 97.6, 
-Wyoming, 60.6, 
-
+Florida, 226.5, 27.994402, -81.760254
+Georgia, 131.9, 33.247875, -83.441162
+Hawaii, 17.6, 19.741755, -155.844437
+Idaho, 18.4, 44.068203, -114.742043
+Illinois, 201.1, 40.000000, -89.000000
+Indiana, 175.8, 40.273502, -86.126976
+Iowa, 76.3, 42.032974, -93.581543
+Kansas, 57.9, 38.500000, -98.000000
+Kentucky, 113.6, 37.839333, -84.270020
+Louisiana, 226.4, 30.391830, -92.329102
+Maine, 15.4, 45.367584, -68.972168
+Maryland, 51.6, 39.045753, -76.641273
+Massachusetts, 63.3, 42.407211, -71.382439
+Michigan, 151.8, 44.182205, -84.506836
+Minnesota, 87.9, 46.392410, -94.636230
+Mississippi, 67.4, 33.000000, -90.000000
+Missouri, 122.4, 38.573936, -92.603760 
+Montana, 30.3, 46.965260, -109.533691
+Nebraska, 47.7, 41.500000, -100.000000
+Nevada, 36.2, 39.876019, -117.224121
+New Hampshire, 13.4, 44.000000, -71.500000
+New Jersey, 101.0, 39.833851, -74.871826
+New Mexico, 48.7, 34.307144, -106.018066
+New York, 156.7, 43.000000, -75.000000
+North Carolina, 115.0, 35.782169, -80.793457
+North Dakota, 56.2, 47.650589, -100.437012
+Ohio, 204.3, 40.367474, -82.996216
+Oklahoma, 92.7, 36.084621, -96.921387
+Oregon, 38.3, 44.000000, -120.500000
+Pennsylvania, 215.3, 41.203323, -77.194527
+Rhode Island, 10.0, 41.700001, -71.500000
+South Carolina, 68.8, 33.836082, -81.163727
+South Dakota, 14.5, 44.500000	, -100.000000
+Tennessee, 97.6, 35.860119, -86.660156
+Texas, 706.5, 31.000000, -100.000000
+Utah, 58.2, 39.419220, -111.950684
+Vermont, 5.8, 44.000000, -72.699997
+Virginia, 97.9, 37.926868, -78.024902
+Washington, 78.2, 47.751076, -120.740135
+West Virginia, 90.8, 39.000000, -80.500000
+Wisconsin, 97.6, 44.500000, -89.500000
+Wyoming, 60.6, 43.075970, -107.290283
 
 Mexico
 pass
