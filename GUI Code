@@ -1,4 +1,17 @@
 from tkinter import *
+from tkinter import *
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#Home Button
+#Map Button
+#Graph Button
+#Table Button
+    #ALL OF THE ABOVE IN A HORIZONTAL LINE.
+#Canvas with semi-transparent label on top of it
+#Label with description
+#Map Image with semi-transparent label
+#Button with map image
+#Description of map
 
 root = Tk()
 class ScrollableFrame(Frame):
