@@ -45,6 +45,7 @@ class Country():
         self.regions = []
         if file:
             with open(file, 'r') as f:
+                f.seek(0, ptr)
                 self.name = f.readline().strip(' \n')
                 q = f.readline().strip(' \n').split(',')
                 while(len(q) > 1):
