@@ -1,15 +1,39 @@
 from tkinter import *
-
+from PIL import Image, ImageTk
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
-#Home Button
-#Map Button
-    #ALL OF THE ABOVE IN A HORIZONTAL LINE.
-#Canvas with semi-transparent label on top of it
-#Label with description
-#Map Image with semi-transparent label
-#Button with map image
-#Description of map
-
 root = Tk()
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+#Frame for all menu buttons
 
+#Home Button:
+HomeButton = Button(root, text = "HOME")
+#Map Button:
+MapButton = Button(root, text = "MAP")
+#Home frame
+HomeFrame = Frame(root)
+#Canvas with Label on top of it
+title_image = Canvas(HomeFrame)
+image = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\titleimage.png")
+image = image.resize((300,300))
+image = ImageTk.PhotoImage(image)
+image_Label = Label(master=HomeFrame,image = image)
+text1 = Label(master=HomeFrame,text = "HELLOTHERE1")
+#Description of program
+description = Label(text = "Insert text here")
+#Map Canvas with label on top of it
+map_image = Canvas(HomeFrame)
+image2 = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\mapimage.jpg")
+image2 = image2.resize((300,300))
+image2 = ImageTk.PhotoImage(image2)
+image_Label2 = Label(master=HomeFrame,image = image2)
+map_image.create_image(0,40,image = image2)
+text2 = Label(master=HomeFrame,text = "HELLOTHERE2")
+#Load all objects
+MapButton.place(anchor = NE, x = -1, y = 1, relx = 1, relwidth = 0.5)
+HomeButton.place(anchor = NW, x = 1, y = 1, relwidth = 0.5)
+#HomeFrame.grid(row = 1, column = 1, rowspan = 6)
+#image_Label.grid(row = 2, column = 1)
+#image_Label2.grid(row = 4, column = 1)
+#text1.grid(row = 3, column = 1)
+#text2.grid(row = 5, column = 1)
 root.mainloop()
