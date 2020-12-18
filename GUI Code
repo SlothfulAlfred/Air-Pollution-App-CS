@@ -1,3 +1,5 @@
+# Rishabh stop leaving files that are just floating in the middle of nowhere. Also name your files using lowercase letters and preferably without spaces. Also make the file 
+# names as short as possible. I'm 100% sure that I sent a tutorial on this and you said that you read it.... -_-
 from tkinter import *
 from PIL import Image, ImageTk
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
