@@ -1,43 +1,54 @@
-# Rishabh stop leaving files that are just floating in the middle of nowhere. Also name your files using lowercase letters and preferably without spaces. Also make the file 
-# names as short as possible. I'm 100% sure that I sent a tutorial on this and you said that you read it.... -_-
 from tkinter import *
 from PIL import Image, ImageTk
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 root = Tk()
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 #Frame for all menu buttons
-
-#Home Button:
-HomeButton = Button(root, text = "HOME")
-#Map Button:
-MapButton = Button(root, text = "MAP")
-#Home frame
+root.title('Air Pollution App')
+Icon = Image.open(r'C:\Users\risht\.PyCharmCE2019.1\config\scratches\icon.png')
+Icon = ImageTk.PhotoImage(Icon)
+root.iconphoto(False, Icon)
+GraphFrame = Frame(root, bg = 'green')
+GraphFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
+MapFrame = Frame(root, bg = 'blue')
+MapFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
 HomeFrame = Frame(root, bg = 'red')
 HomeFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
+#Home Button:
+HomeButton = Button(root, text = "HOME", command = HomeFrame.lift)
+#Map Button:
+MapButton = Button(root, text = "MAP", command = MapFrame.lift)
+#Graph Button
+GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
+#Home frame
+
 #Canvas with Label on top of it
 title_image = Canvas(HomeFrame)
-image = Image.open(r"./Home Images/titleimage.png")
+image = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\titleimage.png")
 image = image.resize((300,300))
 image = ImageTk.PhotoImage(image)
 image_Label = Label(HomeFrame,image = image)
-text1 = Label(HomeFrame,text = "Your guide to pollution across the USA and Canada.")
+text1 = Label(HomeFrame,text = "HELLOTHERE1")
 #Description of program
 description = Label(text = "Insert text here")
 #Map Canvas with label on top of it
 map_image = Canvas(HomeFrame)
-image2 = Image.open(r".\Home Images\mapimage.jpg")
+image2 = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\mapimage.jpg")
 image2 = image2.resize((300,300))
 image2 = ImageTk.PhotoImage(image2)
 image_Label2 = Label(master=HomeFrame,image = image2)
 map_image.create_image(0,40,image = image2)
 text2 = Label(master=HomeFrame,text = "Map: View the amount of pollution in individual states/provinces.")
 #Load all objects
-MapButton.place(anchor = NE, x = -1, y = 1, relx = 1, relwidth = 0.5)
-HomeButton.place(anchor = NW, x = 1, y = 1, relwidth = 0.5)
+
+GraphButton.place(anchor = NE, x = 1, y = 1, relx = 1, relwidth = 0.3333333333333333333333)
+MapButton.place(relx = 0.3333333333333333333333,x = 1, y = 1, relwidth =0.3333333333333333333333)
+HomeButton.place(anchor = NW, x = 1, y = 1, relwidth = 0.3333333333333333333333)
+MapButton.lift
 image_Label.pack()
 text1.pack()
 image_Label2.pack()
 text2.pack()
 #Set size of window
-root.geometry("400x800")
+root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
