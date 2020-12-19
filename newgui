@@ -1,3 +1,12 @@
+# AFAIK the Image class from PIL only supports some obscure file types and doesn't support .png or .jpg
+# you need to do ImageTk.PhotoImage(Image.open('filename.whatever')) for it to work with .png
+# also you need to fix the image pathways. putting a '.' in the file path takes you up one level and '/' or '\' takes you 
+# down one level. ex. if you want the file toad.png with filepath "source/gui/models/toad.png", and the current file is 
+# in "source/gui/code/page1.py" then the filepath should be "../models/toad.png". which is the same as 
+# "gui/models/toad.png". Putting the whole filepath like C:/Users/.../whatever.whatever is not going to work on any
+# computer other than your own. Conversly, putting ../folder/folder2/whatever.whatever will work on any computer 
+# including yours.
+
 from tkinter import *
 from PIL import Image, ImageTk
 import webbrowser  # Use to create footer that will link back to GitHub
