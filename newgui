@@ -1,11 +1,12 @@
 from tkinter import *
 from PIL import Image, ImageTk
+from webbrowser import *  #Use to create footer that will link back to GitHub
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 root = Tk()
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 #Frame for all menu buttons
 root.title('Air Pollution App')
-Icon = Image.open(r'C:\Users\risht\.PyCharmCE2019.1\config\scratches\icon.png')
+Icon = Image.open(r"C:\Users\Asus\PycharmProjects\pythonProject\icon.png")
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
 GraphFrame = Frame(root, bg = 'green')
@@ -23,17 +24,19 @@ GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 #Home frame
 
 #Canvas with Label on top of it
-title_image = Canvas(HomeFrame)
-image = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\titleimage.png")
+title_image = Canvas(HomeFrame,height = 300,width = 300)
+image = Image.open(r"C:\Users\Asus\PycharmProjects\pythonProject\titleimage.png")
 image = image.resize((300,300))
 image = ImageTk.PhotoImage(image)
-image_Label = Label(HomeFrame,image = image)
-text1 = Label(HomeFrame,text = "HELLOTHERE1")
+title_image.create_image(150,150,image = image,anchor = CENTER)
+title_image.create_rectangle(0,0,300,300, fill = 'grey', stipple = 'gray50')
+title_image.create_text(150,150,text = "HELLOTHERE1")
+
 #Description of program
 description = Label(text = "Insert text here")
 #Map Canvas with label on top of it
 map_image = Canvas(HomeFrame)
-image2 = Image.open(r"C:\Users\risht\.PyCharmCE2019.1\config\scratches\mapimage.jpg")
+image2 = Image.open(r"C:\Users\Asus\PycharmProjects\pythonProject\mapimage.jpg")
 image2 = image2.resize((300,300))
 image2 = ImageTk.PhotoImage(image2)
 image_Label2 = Label(master=HomeFrame,image = image2)
@@ -44,9 +47,7 @@ text2 = Label(master=HomeFrame,text = "Map: View the amount of pollution in indi
 GraphButton.place(anchor = NE, x = 1, y = 1, relx = 1, relwidth = 0.3333333333333333333333)
 MapButton.place(relx = 0.3333333333333333333333,x = 1, y = 1, relwidth =0.3333333333333333333333)
 HomeButton.place(anchor = NW, x = 1, y = 1, relwidth = 0.3333333333333333333333)
-MapButton.lift
-image_Label.pack()
-text1.pack()
+title_image.pack()
 image_Label2.pack()
 text2.pack()
 #Set size of window
