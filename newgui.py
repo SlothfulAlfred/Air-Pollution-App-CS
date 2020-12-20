@@ -75,28 +75,39 @@ map_image.create_text(150,150, width = 300, text = "Map: View the amount of poll
 
 #if selected map frame
 CountryFrame = Frame(MapFrame, width=1400, height=800, bg = 'purple')
-CanadaFrame = Frame(MapFrame, width=500, height=500, bg = 'red')
-USAFrame = Frame(MapFrame, width=500, height=500, bg = 'brown')
-MexicoFrame = Frame(MapFrame, width=500, height=500, bg='aqua')
+CanadaFrame = Frame(MapFrame, width=1400, height=800, bg = 'red')
+USAFrame = Frame(MapFrame, width=1400, height=800, bg = 'brown')
+MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
 
-def click():
-
-    if number == 1:
-        CountryFrame.lower
-        CanadaFrame.lift()
-    elif number == 2:
-        CountryFrame.lower       
-        USAFrame.lift()
-    elif number == 3:
-        CountryFrame.lower
-        MexicoFrame.lift()
+def canadaClick():
+    CanadaFrame.lift() 
+def usaClick():
+    USAFrame.lift()
+def mexicoClick():
+    MexicoFrame.lift()   
 
 
 
-CanadaButton = Button(CountryFrame, text = "Canada image here" , command = click(1) )
-USAButton = Button(CountryFrame, text = "USA image here"  , command = click(2))
-MexicoButton = Button(CountryFrame, text = "Mexico image here", command = click(3))
+CanadaButton = Button(CountryFrame, text = "Canada image here" , command = canadaClick )
+USAButton = Button(CountryFrame, text = "USA image here"  , command =usaClick )
+MexicoButton = Button(CountryFrame, text = "Mexico image here", command =mexicoClick )
 
+def backCanada():
+    CanadaFrame.lower() 
+    
+
+def backUSA():
+    USAFrame.lower()
+   
+
+def backMexico():
+    MexicoFrame.lower()   
+    
+
+
+BackButton1 = Button(CanadaFrame, text = 'back', command = backCanada)
+BackButton2 = Button(USAFrame, text = 'back',command = backUSA)
+Backbutton3 = Button(MexicoFrame,text = 'back' ,command = backMexico)
 
 # Load all objects
 
@@ -120,6 +131,10 @@ CountryFrame.lift()
 MexicoButton.place(x=400, y =30)
 CanadaButton.place(x=100, y =30)
 USAButton.place(x=250, y =30)
+BackButton1.place(x = 1000, y=600)
+BackButton2.place(x = 1000, y=600)
+Backbutton3.place(x = 1000, y=600)
+
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
