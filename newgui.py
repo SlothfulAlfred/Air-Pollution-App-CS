@@ -1,4 +1,3 @@
-
 from tkinter import *
 from PIL import Image, ImageTk
 import pathlib
@@ -11,6 +10,7 @@ root.title('Air Pollution App')
 
 filename = pathlib.Path(__file__).parent.absolute()
 print(filename)
+
 
 
 Icon_path = str(filename) + "\homeimages\icon.png"
@@ -73,6 +73,7 @@ map_image.create_image(150,150,image = image2,anchor = CENTER)
 map_image.create_rectangle(0,0,300,300, fill = 'grey', stipple = 'gray50')
 map_image.create_text(150,150, width = 300, text = "Map: View the amount of pollution in individual states/provinces.")
 
+
 #if selected map frame
 CountryFrame = Frame(MapFrame, width=1400, height=800, bg = 'purple')
 CanadaFrame = Frame(MapFrame, width=1400, height=800, bg = 'red')
@@ -109,6 +110,17 @@ BackButton1 = Button(CanadaFrame, text = 'back', command = backCanada)
 BackButton2 = Button(USAFrame, text = 'back',command = backUSA)
 Backbutton3 = Button(MexicoFrame,text = 'back' ,command = backMexico)
 
+
+
+
+
+
+
+
+
+
+
+
 # Load all objects
 
 GraphButton.place(anchor = NE, x = 1, y = 1, relx = 1, relwidth = 0.3333333333333333333333)
@@ -116,6 +128,7 @@ MapButton.place(relx = 0.3333333333333333333333,x = 1, y = 1, relwidth =0.333333
 HomeButton.place(anchor = NW, x = 1, y = 1, relwidth = 0.3333333333333333333333)
 title_image.pack()
 map_image.pack()
+
 
 #placing all the frames and defining their size
 MexicoFrame.place(x = 0, y =0)
@@ -128,12 +141,17 @@ CountryFrame.lift()
 
 
 #button placements
-MexicoButton.place(x=400, y =30)
-CanadaButton.place(x=100, y =30)
-USAButton.place(x=250, y =30)
+MexicoButton.place(x=1200, y =300)
+CanadaButton.place(x=300, y =300)
+USAButton.place(x=700, y =300)
 BackButton1.place(x = 1000, y=600)
 BackButton2.place(x = 1000, y=600)
 Backbutton3.place(x = 1000, y=600)
+
+
+
+
+
 
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
