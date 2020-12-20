@@ -81,36 +81,34 @@ USAFrame = Frame(MapFrame, width=1400, height=800, bg = 'brown')
 MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
 #function for when u click button (map frame)
 
-def canadaClick():
-    CanadaFrame.lift() 
-def usaClick():
-    USAFrame.lift()
-def mexicoClick():
-    MexicoFrame.lift()   
+def click(number):
+    if number == 1:
+        CanadaFrame.lift()
+    elif number == 2:
+        USAFrame.lift()
+    elif number == 3:
+        MexicoFrame.lift()
 
 
 
-CanadaButton = Button(CountryFrame, text = "Canada image here" , command = canadaClick )
-USAButton = Button(CountryFrame, text = "USA image here"  , command =usaClick )
-MexicoButton = Button(CountryFrame, text = "Mexico image here", command =mexicoClick )
+CanadaButton = Button(CountryFrame, text = "Canada image here" , command =  lambda : click(1) )
+USAButton = Button(CountryFrame, text = "USA image here"  , command = lambda:  click(2) )
+MexicoButton = Button(CountryFrame, text = "Mexico image here", command = lambda : click(3) )
 #function for when you click the back button(graph frame)
 
-def backCanada():
-    CanadaFrame.lower() 
-    
-
-def backUSA():
-    USAFrame.lower()
-   
-
-def backMexico():
-    MexicoFrame.lower()   
+def backClick(number1):
+    if number1 == 1:
+        CanadaFrame.lower() 
+    elif number1 == 2:
+        USAFrame.lower()
+    elif number1 == 3:
+        MexicoFrame.lower()   
     
 
 
-BackButton1 = Button(CanadaFrame, text = 'back', command = backCanada)
-BackButton2 = Button(USAFrame, text = 'back',command = backUSA)
-Backbutton3 = Button(MexicoFrame,text = 'back' ,command = backMexico)
+BackButton1 = Button(CanadaFrame, text = 'back', command = lambda : backClick(1))
+BackButton2 = Button(USAFrame, text = 'back',command = lambda : backClick(2))
+Backbutton3 = Button(MexicoFrame,text = 'back' ,command = lambda : backClick(3))
 
 
 
@@ -122,31 +120,33 @@ CanadaFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'beige')
 USAFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'blue')
 MexicoFrameGraph = Frame(GraphFrame, width=1400, height=800, bg='green')
 #function for when u click button (graph frame)
-def canadaClickGraph():
-    CanadaFrameGraph.lift() 
-def usaClickGraph():
-    USAFrameGraph.lift()
-def mexicoClickGraph():
-    MexicoFrameGraph.lift()   
+def clickGraph(number2):
+    if number2 == 1:
+        CanadaFrameGraph.lift() 
+    elif number2 == 2:
+        USAFrameGraph.lift()
+    elif number2 == 3:
+        MexicoFrameGraph.lift()   
 
 
 
-CanadaButtonGraph = Button(CountryFrameGraph, text = "Canada image here" , command = canadaClickGraph )
-USAButtonGraph = Button(CountryFrameGraph, text = "USA image here"  , command =usaClickGraph )
-MexicoButtonGraph = Button(CountryFrameGraph, text = "Mexico image here", command =mexicoClickGraph )
+CanadaButtonGraph = Button(CountryFrameGraph, text = "Canada image here" , command =lambda: clickGraph(1) )
+USAButtonGraph = Button(CountryFrameGraph, text = "USA image here"  , command =lambda: clickGraph(2)  )
+MexicoButtonGraph = Button(CountryFrameGraph, text = "Mexico image here", command =lambda: clickGraph(3)  )
 #function for when you click the back button(graph frame)
-def backCanadaGraph():
-    CanadaFrameGraph.lower() 
-def backUSAGraph():
-    USAFrameGraph.lower()
-def backMexicoGraph():
-    MexicoFrameGraph.lower()   
+def backclickGraph(number3):
+    if number3 == 1:
+        CanadaFrameGraph.lower() 
+    elif number3 == 2:
+        USAFrameGraph.lower()
+    elif number3 == 3:
+        MexicoFrameGraph.lower()   
     
 
 
-BackButton1Graph = Button(CanadaFrameGraph, text = 'back', command = backCanadaGraph)
-BackButton2Graph = Button(USAFrameGraph, text = 'back',command = backUSAGraph)
-Backbutton3Graph = Button(MexicoFrameGraph,text = 'back' ,command = backMexicoGraph)
+BackButton1Graph = Button(CanadaFrameGraph, text = 'back', command = lambda : backclickGraph(1))
+BackButton2Graph = Button(USAFrameGraph, text = 'back',command = lambda : backclickGraph(2))
+Backbutton3Graph = Button(MexicoFrameGraph,text = 'back' ,command  = lambda : backclickGraph(3))
 
 
 
@@ -215,5 +215,4 @@ Backbutton3Graph.place(x = 1000, y=600)
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
-
 
