@@ -16,7 +16,9 @@ root = Tk()
 # Frame for all menu buttons
 root.title('Air Pollution App')
 
-Icon = Image.open(r"....../Home Images/icon.png")
+Icon = Image.open(r"....../Home Images/icon.png") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the 
+                                                  # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
+                                                  # without a space.
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
 
