@@ -1,14 +1,7 @@
-# AFAIK the Image class from PIL only supports some obscure file types and doesn't support .png or .jpg
-# you need to do ImageTk.PhotoImage(Image.open('filename.whatever')) for it to work with .png
-# also you need to fix the image pathways. putting a '.' in the file path takes you up one level and '/' or '\' takes you 
-# down one level. ex. if you want the file toad.png with filepath "source/gui/models/toad.png", and the current file is 
-# in "source/gui/code/page1.py" then the filepath should be "../models/toad.png". which is the same as 
-# "gui/models/toad.png". Putting the whole filepath like C:/Users/.../whatever.whatever is not going to work on any
-# computer other than your own. Conversly, putting ../folder/folder2/whatever.whatever will work on any computer 
-# including yours.
 
 from tkinter import *
 from PIL import Image, ImageTk
+import pathlib
 import webbrowser  # Use to create footer that will link back to GitHub
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 root = Tk()
@@ -16,7 +9,12 @@ root = Tk()
 # Frame for all menu buttons
 root.title('Air Pollution App')
 
-Icon = Image.open(r"homeimages\icon.png") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
+filename = pathlib.Path(__file__).parent.absolute()
+print(filename)
+
+
+Icon_path = str(filename) + "\homeimages\icon.png"
+Icon = Image.open(Icon_path,mode="r") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
                                                   # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
                                                   # without a space.
 Icon = ImageTk.PhotoImage(Icon)
@@ -27,7 +25,8 @@ def open():
     webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")
 
 # Footer
-Footer = Image.open(r"homeimages\icon.png")
+Footer_path = str(filename) + "\homeimages\icon.png"
+Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19,19))
 Footer = ImageTk.PhotoImage(Footer)
 
@@ -53,7 +52,8 @@ GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 
 # Canvas with Label on top of it
 title_image = Canvas(HomeFrame,height = 300,width = 300)
-image = Image.open(r"homeimages\titleimage.png")
+titleimage_path = str(filename) + "\homeimages/titleimage.png"
+image = Image.open(titleimage_path, mode="r")
 image = image.resize((300,300))
 image = ImageTk.PhotoImage(image)
 title_image.create_image(150,150,image = image,anchor = CENTER)
@@ -65,7 +65,8 @@ description = Label(text = "Insert text here")
 
 # Map Canvas with label on top of it
 map_image = Canvas(HomeFrame,height = 300,width = 300)
-image2 = Image.open(r"homeimages\mapimage.jpg")
+mapimage_path = str(filename) + '\homeimages\mapimage.jpg'
+image2 = Image.open(mapimage_path, mode="r")
 image2 = image2.resize((300,300))
 image2 = ImageTk.PhotoImage(image2)
 map_image.create_image(150,150,image = image2,anchor = CENTER)
