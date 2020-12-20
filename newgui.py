@@ -16,7 +16,7 @@ root = Tk()
 # Frame for all menu buttons
 root.title('Air Pollution App')
 
-Icon = Image.open(r"....../Home Images/icon.png") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the 
+Icon = Image.open(r"Home Images\icon.png") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the 
                                                   # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
                                                   # without a space.
 Icon = ImageTk.PhotoImage(Icon)
@@ -27,7 +27,7 @@ def open():
     webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")
 
 # Footer
-Footer = Image.open(r"......\Home Images\icon.png")
+Footer = Image.open(r"Home Images\icon.png")
 Footer = Footer.resize((19,19))
 Footer = ImageTk.PhotoImage(Footer)
 
@@ -53,7 +53,7 @@ GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 
 # Canvas with Label on top of it
 title_image = Canvas(HomeFrame,height = 300,width = 300)
-image = Image.open(r"......\Home Images\titleimage.png")
+image = Image.open(r"Home Images\titleimage.png")
 image = image.resize((300,300))
 image = ImageTk.PhotoImage(image)
 title_image.create_image(150,150,image = image,anchor = CENTER)
@@ -65,7 +65,7 @@ description = Label(text = "Insert text here")
 
 # Map Canvas with label on top of it
 map_image = Canvas(HomeFrame,height = 300,width = 300)
-image2 = Image.open(r"......\Home Images\mapimage.jpg")
+image2 = Image.open(r"Home Images\mapimage.jpg")
 image2 = image2.resize((300,300))
 image2 = ImageTk.PhotoImage(image2)
 map_image.create_image(150,150,image = image2,anchor = CENTER)
