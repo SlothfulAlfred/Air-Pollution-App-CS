@@ -90,12 +90,29 @@ def click(number):
         MexicoFrame.lift()
 
 
+#images for buttons
+Canada_path = str(filename) + "\\homeimages\\canada.png"
+CanadaImage = Image.open(Canada_path, mode="r")
+CanadaImage = CanadaImage.resize((19,19))
+CanadaImage = ImageTk.PhotoImage(CanadaImage)
+USA_path = str(filename) + "\\homeimages\\USA.png "
+USAImage = Image.open(USA_path, mode="r")
+USAImage = USAImage.resize((19,19))
+USAImage = ImageTk.PhotoImage(USAImage)
+Mexico_path = str(filename) + "\\homeimages\\mexico.png"
+MexicoImage = Image.open(Mexico_path, mode="r")
+MexicoImage = MexicoImage.resize((19,19))
+MexicoImage = ImageTk.PhotoImage(MexicoImage)
 
-CanadaButton = Button(CountryFrame, text = "Canada image here" , command =  lambda : click(1) )
-USAButton = Button(CountryFrame, text = "USA image here"  , command = lambda:  click(2) )
-MexicoButton = Button(CountryFrame, text = "Mexico image here", command = lambda : click(3) )
-#function for when you click the back button(graph frame)
 
+
+CanadaButton = Button(CountryFrame, compound = TOP, width = 100, height = 100, image = USAImage, command =  lambda : click(1) )
+USAButton = Button(CountryFrame, text = "USA"  , command = lambda:  click(2) )
+MexicoButton = Button(CountryFrame, text = "Mexico", command = lambda : click(3) )
+
+
+
+#function for when you click the back button(map frame)
 def backClick(number1):
     if number1 == 1:
         CanadaFrame.lower() 
@@ -215,4 +232,5 @@ Backbutton3Graph.place(x = 1000, y=600)
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
+
 
