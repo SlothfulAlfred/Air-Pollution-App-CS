@@ -98,6 +98,10 @@ Mexico_path = str(filename) + "\\homeimages\\mexico.png"
 MexicoImage = Image.open(Mexico_path, mode="r")
 MexicoImage = MexicoImage.resize((250,125))
 MexicoImage = ImageTk.PhotoImage(MexicoImage)
+Back_path = str(filename) + "\\homeimages\\back.png"
+BackImage = Image.open(Back_path, mode="r")
+BackImage = BackImage.resize((100,100))
+BackImage = ImageTk.PhotoImage(BackImage)
 
 CanadaButton = Button(CountryFrame, compound = TOP, width = 100, height = 100,text = "Canada", image = CanadaImage, command =  lambda : click(1) )
 USAButton = Button(CountryFrame, compound = TOP, width = 100, height = 100, text = "USA", image = USAImage, command = lambda:  click(2) )
@@ -113,9 +117,9 @@ def backClick(number1):
         MexicoFrame.lower()
 
 # Defining buttons for map page
-BackButton1 = Button(CanadaFrame, text = 'back', command = lambda : backClick(1))
-BackButton2 = Button(USAFrame, text = 'back',command = lambda : backClick(2))
-Backbutton3 = Button(MexicoFrame,text = 'back' ,command = lambda : backClick(3))
+BackButton1 = Button(CanadaFrame,compound  = TOP, image = BackImage, text = 'back', command = lambda : backClick(1))
+BackButton2 = Button(USAFrame,compound  = TOP, image = BackImage, text = 'back',command = lambda : backClick(2))
+Backbutton3 = Button(MexicoFrame,compound  = TOP, image = BackImage,text = 'back' ,command = lambda : backClick(3))
 
 # If selected graph frame
 CountryFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'pink')
@@ -146,9 +150,9 @@ def backclickGraph(number3):
         MexicoFrameGraph.lower()   
 
 # Defining all graph page buttons
-BackButton1Graph = Button(CanadaFrameGraph, text = 'back', command = lambda : backclickGraph(1))
-BackButton2Graph = Button(USAFrameGraph, text = 'back',command = lambda : backclickGraph(2))
-Backbutton3Graph = Button(MexicoFrameGraph,text = 'back' ,command  = lambda : backclickGraph(3))
+BackButton1Graph = Button(CanadaFrameGraph,compound  = TOP, image = BackImage, text = 'back', command = lambda : backclickGraph(1))
+BackButton2Graph = Button(USAFrameGraph,compound  = TOP, image = BackImage, text = 'back',command = lambda : backclickGraph(2))
+Backbutton3Graph = Button(MexicoFrameGraph,compound  = TOP, image = BackImage,text = 'back' ,command  = lambda : backclickGraph(3))
 
 # Load all objects
 GraphButton.place(anchor = NE, x = 1, y = 1, relx = 1, relwidth = 0.3333333333333333333333)
@@ -170,9 +174,9 @@ CountryFrame.lift()
 MexicoButton.place(relx=0.725, rely = 0.35, relwidth =0.2,relheight =0.3)
 CanadaButton.place(relx = 0.055, rely = 0.35, relwidth =0.2,relheight =0.3)
 USAButton.place(relx = 0.39, rely = 0.35, relwidth =0.2,relheight =0.3)
-BackButton1.place(x = 1000, y=600)
-BackButton2.place(x = 1000, y=600)
-Backbutton3.place(x = 1000, y=600)
+BackButton1.place(relx = 0.875, rely =0.65)
+BackButton2.place(relx = 0.875, rely =0.65)
+Backbutton3.place(relx = 0.875, rely =0.65)
 
 #placing all the map frames and defining their location(Graph frame)
 MexicoFrameGraph.place(x = 0, y =0)
@@ -187,9 +191,9 @@ CountryFrameGraph.lift()
 MexicoButtonGraph.place(relx=0.725, rely = 0.35, relwidth =0.2,relheight =0.3)
 CanadaButtonGraph.place(relx = 0.055, rely = 0.35, relwidth =0.2,relheight =0.3)
 USAButtonGraph.place(relx = 0.39, rely = 0.35, relwidth =0.2,relheight =0.3)
-BackButton1Graph.place(x = 1000, y=600)
-BackButton2Graph.place(x = 1000, y=600)
-Backbutton3Graph.place(x = 1000, y=600)
+BackButton1Graph.place(relx = 0.875, rely =0.65)
+BackButton2Graph.place(relx = 0.875, rely =0.65)
+Backbutton3Graph.place(relx = 0.875, rely =0.65)
 
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
