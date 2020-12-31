@@ -1,3 +1,4 @@
+
 class Region():
     """
     An object that contains the air pollution data and the geocoordinates of a certain area / region
