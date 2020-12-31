@@ -23,3 +23,13 @@ dataFrame_new = dataFrame[dataFrame['Province'].isin(scope)]
 values = dataFrame_new['Pollution'].tolist()
 colorscale = ["FF5733","FF5733","174AAF","17AF53",
               "17AF53","AF3217","FF5733","174AAF","AF3217","FF5733","174AAF","AF3217","17AF53",]
+
+
+fig= ff.create_choropleth(
+     values=values, colorscale=colorscale, scope=scope, round_legend_values=True, simplify_county =0, simplify_state=0,
+    county_outline={'color':'rgb(15,15,55)', 'width':0.5},
+    legend_title="pollution per province,",
+    title='Canada'
+)
+
+iplot(fig, filename='Map')
