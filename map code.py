@@ -1,35 +1,33 @@
-import plotly.plotly as py
-import plotly.figure_factory as ff
-import plotly.tools as tls
+import json
 import numpy as np
 import pandas as pd
-# Also can you put a link to the documentation that you're using so that I know
-# what params you need and what type of map you are making. I went to the plotly website
-# and there are more than 10 different types of maps and I have no idea which you plan
-# to use. 
+import plotly.express as px
+import plotly.io as pio
+df = pd.read_csv(r"C:\Users\johan\Downloads\data.csv") #Change the file path to work on your device
+geojson = json.load(open("C:\Users\johan\Downloads\canada_provinces.geojson", "r")) #Change the file path to work on your device
 
-scope= ['Canada']
-# Why are you reading from a spreadsheet? The data is already on a file named "data.txt"
-# and it will be initialized to objects later; it never passes through a spreadsheet phase. 
-# Also, why is the filepath still not relative? 
-dataFrame = pd.read_csv(r"C:\Users\johan\Downloads\Untitled spreadsheet - Sheet1.csv")
+prov_id_map = {}
+for feature in geojson["features"]:
+    feature["id"] = feature["properties"]["cartodb_id"]
+    prov_id_map[feature["properties"]["name"]] = feature["id"]
 
-# Did you put an unnecessary layer of nesting here? why dataFrame[dataFrame[..]..] instead of just 
-# [dataFrame[province] for province in scope] or [dataFrame[province] if dataFrame[province].isin(scope)]
-# What I mean is that using list comprehension would be a better way to do this
+df = pd.read_csv("C:\Users\johan\Downloads\data.csv")
+df["Density"] = df["Pollution"].apply(lambda x: int(x))
+df["id"] = df["Province"].apply(lambda x: prov_id_map[x])
+df.head()
 
-dataFrame_new = dataFrame[dataFrame['Province'].isin(scope)]
-
-values = dataFrame_new['Pollution'].tolist()
-colorscale = ["FF5733","FF5733","174AAF","17AF53",
-              "17AF53","AF3217","FF5733","174AAF","AF3217","FF5733","174AAF","AF3217","17AF53",]
-
-
-fig= ff.create_choropleth(
-     values=values, colorscale=colorscale, scope=scope, round_legend_values=True, simplify_county =0, simplify_state=0,
-    county_outline={'color':'rgb(15,15,55)', 'width':0.5},
-    legend_title="pollution per province,",
-    title='Canada'
+df["DensityScale"] = np.log10(df["Density"])
+fig = px.choropleth(
+    df,
+    locations="id",
+    geojson=geojson,
+    color="DensityScale",
+    hover_name="Province",
+    hover_data=["Density"],
+    title="India Population Density",
 )
-
-iplot(fig, filename='Map')
+fig.update_geos(fitbounds="locations", visible=False)
+fig.show()
+fig.write_image('C:/Users/johan/Desktop/fig1.png') #Change the file path to work on your device
+fig.to_image(format="png", engine="kaleido")
+#If this works correctly, the program will open a tab (I'm not sure if the tab has the graph) and generate a png file of the graph at the specified location
