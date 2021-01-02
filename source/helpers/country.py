@@ -1,10 +1,6 @@
 import .region as reg
 import logging
 
-# Pointer (more like a file index) to current file position to aid initialization of 
-# multiple Country objects
-
-ptr = 0
 class Country():
     '''
     An object that contains a list of associated Region objects (ex. Canada contains provinces/territories)
@@ -45,14 +41,11 @@ class Country():
         self.regions = []
         if file:
             with open(file, 'r') as f:
-                f.seek(0, ptr)
                 self.name = f.readline().strip(' \n')
                 q = f.readline().strip(' \n').split(',')
                 while(len(q) > 1):
                     self.regions.append(reg.Region(q[0], q[1], q[2], q[3]))
                     q = f.readline().strip(' \n').split(',')
-                    global ptr
-                    ptr = f.tell()
         else:
             raise FileNotFoundError(logging.log("File not provided"))
 
