@@ -11,7 +11,7 @@ root.title('Air Pollution App')
 filename = pathlib.Path(__file__).parent.absolute()
 print(filename)
 
-Icon_path = str(filename) + "\images\icon.png"
+Icon_path = str(filename) + "\homeimages\icon.png"
 Icon = Image.open(Icon_path,mode="r") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
                                                   # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
                                                   # without a space.
