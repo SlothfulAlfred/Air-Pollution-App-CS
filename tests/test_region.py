@@ -1,5 +1,5 @@
 import unittest
-import region
+import source.helpers.region
 
 class Test_Region(unittest.TestCase):
     def setUp(self):
