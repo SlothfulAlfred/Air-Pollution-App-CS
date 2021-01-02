@@ -1,4 +1,4 @@
-import region as reg
+import .region as reg
 import logging
 
 # Pointer (more like a file index) to current file position to aid initialization of 
