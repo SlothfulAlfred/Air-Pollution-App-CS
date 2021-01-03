@@ -8,19 +8,24 @@ print(os.getcwd())
 path_parent = os.path.dirname(os.getcwd())
 os.chdir(path_parent)
 print(os.getcwd())
+# do you need sys and os? also why are you printing the cwd
 
 from source.helpers.region import Region
 from source.helpers.country import Country
 data = open(r"map\\docs\\usa.txt")
 
-Canada = Country(file = "map\\docs\\usa.txt")
+# you don't need to use a kwarg here since file is the only argument that is needed
+Canada = Country(file = "map\\docs\\usa.txt") 
 canada_size = len(Canada.regions)
+# you don't need to declare these first you can do everything during the list comprehension 
 lat_list = []
 lon_list = []
 em_list = []
 
-i = 0
-lat_list = [(Canada.regions[i].lat) for i in range (canada_size)]
+i = 0 # this variable is not necessary 
+# why not iterate through the list directly instead of iterating through a range of subscripts then accessing the list
+# i.e [region.lat for region in Canada.regions]
+lat_list = [(Canada.regions[i].lat) for i in range (canada_size)] 
 lon_list = [(Canada.regions[i].lon) for i in range (canada_size)]
 em_list = [(Canada.regions[i].emissions) for i in range (canada_size)]
 
