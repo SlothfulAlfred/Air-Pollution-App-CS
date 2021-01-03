@@ -14,28 +14,32 @@ filename = pathlib.Path(__file__).parent.absolute()
 print(filename)
 
 Icon_path = str(filename) + "\images\icon.png"
-Icon = Image.open(Icon_path,mode="r")                                                 
+Icon = Image.open(Icon_path,mode="r") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
+                                                  # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
+                                                  # without a space.
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
 
 
-# Link opening function. If yes is selected it redirects user to the source code
-def popup():
-    result = tk.messagebox.askyesno(title="Redirect Warning", message="This link directs you to the source code for this project. Click YES to proceed to our github or NO to close this message.")
-    if result == True:
-       webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")    
+    
 
 # Footer
 Footer_path = str(filename) + "\images\icon.png"
 Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19,19))
 Footer = ImageTk.PhotoImage(Footer)
+# Link opening function
+
+def popup():
+    result = tk.messagebox.askyesno(title="Redirect Warning", message="This link directs you to the source code for this project. Click YES to proceed to our github or NO to close this message.")
+    if result == True:
+       webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")
+    
 
 
 footer = Button(text = "Source Code:", image = Footer, compound = LEFT, command = popup)
 footer.place(width = 100, height = 30,rely = 0.9525, relx = 0.921)
 
-# Making 3 seperate frames. All represent a different section of the app 
 GraphFrame = Frame(root, bg = 'green')
 GraphFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
 MapFrame = Frame(root, bg = 'blue')
@@ -43,13 +47,13 @@ MapFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight 
 HomeFrame = Frame(root, bg = 'red')
 HomeFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
 
-# Home Button: (home frame is displayed)
+# Home Button:
 HomeButton = Button(root, text = "HOME", command = HomeFrame.lift)
 
-# Map Button: (map frame is displayed)
+# Map Button:
 MapButton = Button(root, text = "MAP", command = MapFrame.lift)
 
-# Graph Button: (graph frame is displayed)
+# Graph Button
 GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 
 # Canvas with Label on top of it
@@ -80,6 +84,19 @@ CountryFrame = Frame(MapFrame, width=1400, height=800, bg = 'purple')
 CanadaFrame = Frame(MapFrame, width=1400, height=800, bg = 'red')
 USAFrame = Frame(MapFrame, width=1400, height=800, bg = 'brown')
 MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
+
+#image for canada Frame
+canadaMap_image = Canvas(CanadaFrame,height = 300,width = 300)
+canadaMap_path = str(filename) + "\images/canada_map.png"
+imageCanadaMap = Image.open(canadaMap_path, mode="r")
+imageCanadaMap = imageCanadaMap.resize((300,300))
+imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
+canadaMap_image.create_image(150,150, image = imageCanadaMap,anchor = CENTER)
+
+
+
+
+
 # Function for when u click button (map frame)
 
 def click(number):
@@ -90,7 +107,7 @@ def click(number):
     elif number == 3:
         MexicoFrame.lift()
 
-# Images for the 3 buttons on the Country Frame
+# Images for buttons
 Canada_path = str(filename) + "\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
 CanadaImage = CanadaImage.resize((270,135))
@@ -132,6 +149,10 @@ CountryFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'pink')
 CanadaFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'beige')
 USAFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'blue')
 MexicoFrameGraph = Frame(GraphFrame, width=1400, height=800, bg='green')
+
+
+
+
 
 #Function for when u click button (graph frame)
 def clickGraph(number2):
@@ -201,7 +222,11 @@ BackButton1Graph.place(relx = 0.875, rely =0.65)
 BackButton2Graph.place(relx = 0.875, rely =0.65)
 Backbutton3Graph.place(relx = 0.875, rely =0.65)
 
+
+
+#adding images for the map frame
+
+
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
-
