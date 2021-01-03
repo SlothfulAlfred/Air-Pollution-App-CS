@@ -14,32 +14,28 @@ filename = pathlib.Path(__file__).parent.absolute()
 print(filename)
 
 Icon_path = str(filename) + "\images\icon.png"
-Icon = Image.open(Icon_path,mode="r") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
-                                                  # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
-                                                  # without a space.
+Icon = Image.open(Icon_path,mode="r")                                                 
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
 
 
-    
+# Link opening function. If yes is selected it redirects user to the source code
+def popup():
+    result = tk.messagebox.askyesno(title="Redirect Warning", message="This link directs you to the source code for this project. Click YES to proceed to our github or NO to close this message.")
+    if result == True:
+       webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")    
 
 # Footer
 Footer_path = str(filename) + "\images\icon.png"
 Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19,19))
 Footer = ImageTk.PhotoImage(Footer)
-# Link opening function
-
-def popup():
-    result = tk.messagebox.askyesno(title="Redirect Warning", message="This link directs you to the source code for this project. Click YES to proceed to our github or NO to close this message.")
-    if result == True:
-       webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")
-    
 
 
 footer = Button(text = "Source Code:", image = Footer, compound = LEFT, command = popup)
 footer.place(width = 100, height = 30,rely = 0.9525, relx = 0.921)
 
+# Making 3 seperate frames. All represent a different section of the app 
 GraphFrame = Frame(root, bg = 'green')
 GraphFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
 MapFrame = Frame(root, bg = 'blue')
@@ -47,13 +43,13 @@ MapFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight 
 HomeFrame = Frame(root, bg = 'red')
 HomeFrame.place(anchor = CENTER, relx = 0.5, rely = 0.5, relwidth = 1, relheight = 0.9)
 
-# Home Button:
+# Home Button: (home frame is displayed)
 HomeButton = Button(root, text = "HOME", command = HomeFrame.lift)
 
-# Map Button:
+# Map Button: (map frame is displayed)
 MapButton = Button(root, text = "MAP", command = MapFrame.lift)
 
-# Graph Button
+# Graph Button: (graph frame is displayed)
 GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 
 # Canvas with Label on top of it
@@ -94,7 +90,7 @@ def click(number):
     elif number == 3:
         MexicoFrame.lift()
 
-# Images for buttons
+# Images for the 3 buttons on the Country Frame
 Canada_path = str(filename) + "\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
 CanadaImage = CanadaImage.resize((270,135))
