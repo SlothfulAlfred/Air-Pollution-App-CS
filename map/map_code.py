@@ -3,31 +3,25 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.io as pio
-df = pd.read_csv(r"C:\Users\johan\Downloads\data.csv") #Change the file path to work on your device
-geojson = json.load(open("C:\Users\johan\Downloads\canada_provinces.geojson", "r")) #Change the file path to work on your device
+import sys
+import os
 
-prov_id_map = {}
-for feature in geojson["features"]:
-    feature["id"] = feature["properties"]["cartodb_id"]
-    prov_id_map[feature["properties"]["name"]] = feature["id"]
+print(os.getcwd())
+path_parent = os.path.dirname(os.getcwd())
+os.chdir(path_parent)
+print(os.getcwd())
 
-df = pd.read_csv("C:\Users\johan\Downloads\data.csv")
-df["Density"] = df["Pollution"].apply(lambda x: int(x))
-df["id"] = df["Province"].apply(lambda x: prov_id_map[x])
-df.head()
+from source.helpers.region import Region
+from source.helpers.country import Country
+data = open(r"gui\docs\canada.txt")
 
-df["DensityScale"] = np.log10(df["Density"])
-fig = px.choropleth(
-    df,
-    locations="id",
-    geojson=geojson,
-    color="DensityScale",
-    hover_name="Province",
-    hover_data=["Density"],
-    title="India Population Density",
-)
-fig.update_geos(fitbounds="locations", visible=False)
-fig.show()
-fig.write_image('C:/Users/johan/Desktop/fig1.png') #Change the file path to work on your device
-fig.to_image(format="png", engine="kaleido")
+Canada = Country(file = "gui\docs\canada.txt")
+df = Canada.regions[0]
+df = df.lat()
+print(df)
+
+#fig = px.scatter_mapbox(df, lat="centroid_lat", lon="centroid_lon",     color="peak_hour", size="car_hours",
+#                  color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
+#fig.show()
+
 #If this works correctly, the program will open a tab (I'm not sure if the tab has the graph) and generate a png file of the graph at the specified location
