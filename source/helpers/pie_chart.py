@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import .country
 
 
-def create_pie_regions(countries = []):
+def create_pie_regions(countries):
     '''
     A function that creates a pie charts of given countries
 
