@@ -1,5 +1,6 @@
 import unittest
-import source.helpers.pie_chart as chrt
+import source.helpers.pie_chart as pie
+import source.helpers.bar_chart as bar
 import matplotlib.pyplot as plt
 from source.helpers.country import Country
 
@@ -16,16 +17,29 @@ class Test_Pie_Chart(unittest.TestCase):
     def tearDown(self):
         pass
 
+    # pie chart tests
     def test_pie_chart_regions_params(self):
-        chart = chrt.create_pie_regions(cntry)
+        chart = pie.create_pie_regions(cntry)
         self.assertEqual(chart, False)
-        chart = chrt.create_pie_regions([])
+        chart = pie.create_pie_regions([])
         self.assertEqual(chart, False)
 
     def test_pie_chart_regions(self):
         countries = [cntry]
-        chart = chrt.create_pie_regions(countries)
+        chart = pie.create_pie_regions(countries)
         self.assertEqual(chart, True)
+
+    # bar chart tests
+    def test_bar_chart_regions_params(self):
+        chart = bar.create_bar_regions(cntry)
+        self.assertEqual(chart, False)
+        chart = bar.create_bar_regions([])
+        self.assertEqual(chart, False)
+
+    def test_bar_chart_regions(self):
+       countries = [cntry]
+       chart = bar.create_bar_regions(countries)
+       self.assertEqual(chart, True)
 
 if __name__ == '__main__':
     unittest.main()
