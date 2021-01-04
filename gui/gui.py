@@ -86,14 +86,13 @@ USAFrame = Frame(MapFrame, width=1400, height=800, bg = 'brown')
 MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
 
 #image for canada Frame
-canadaMap_image = Canvas(CanadaFrame,height = 300,width = 300)
+canadaMap_image = Canvas(CanadaFrame,height = 500,width = 700)
 canadaMap_path = str(filename) + "\images/canada_map.png"
-imageCanadaMap = Image.open(canadaMap_path, mode="r")
-imageCanadaMap = imageCanadaMap.resize((300,300))
+imageCanadaMap = Image.open(canadaMap_path, mode= 'r')
+imageCanadaMap = imageCanadaMap.resize((700,500))
 imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
-canadaMap_image.create_image(150,150, image = imageCanadaMap,anchor = CENTER)
-
-
+canadaMap_image.create_image(650,350, image = imageCanadaMap,anchor = CENTER)
+canadaMap_image.place(height=1000, width =2000)
 
 
 
