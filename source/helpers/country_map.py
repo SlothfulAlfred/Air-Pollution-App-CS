@@ -20,13 +20,16 @@ from country import Country
 
 #Function (country)
 
-
+# Please alter this to take a Country object as a parameter instead of a name. I believe that we already talked about
+# this during the last discord meeting.
 def region_map(name):
     
+    # What is the point of this variable.
     i = 0
     
     name = name.lower()
     map_pathname = ("docs\\" + name + ".txt")
+    # why would you save the map in the maps folder instead of in the images folder. 
     image_pathname = ("source/helpers/maps/" + name + "_map.png")
     
     if os.path.isfile(image_pathname) == False:
@@ -35,6 +38,9 @@ def region_map(name):
         Map = Country(file = map_pathname)
         map_size = len(Map.regions)
         
+        # .................
+        # What happened to the list comprehension that you had before?
+        # this is way harder to read and it's slower. 
         lat_list = [(Map.regions[i].lat) for i in range (map_size)]
         lon_list = [(Map.regions[i].lon) for i in range (map_size)]
         em_list = [(Map.regions[i].emissions) for i in range (map_size)]
@@ -46,4 +52,5 @@ def region_map(name):
         fig.update_layout(mapbox_style="carto-positron")
         fig.write_image(image_pathname)
         fig.to_image(format="png", engine="kaleido")
+    # What is the point of this variable i?
     i += 1
