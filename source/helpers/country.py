@@ -1,5 +1,5 @@
 import logging
-import source.helpers.region as reg
+import region as reg
 
 class Country():
     '''
