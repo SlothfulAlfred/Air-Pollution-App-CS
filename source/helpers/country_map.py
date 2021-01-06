@@ -22,29 +22,27 @@ from country import Country
 
 
 def region_map(name):
+    
     i = 0
+    
     name = name.lower()
     map_pathname = ("docs\\" + name + ".txt")
-    map_pathname = map_pathname
     image_pathname = ("source/helpers/maps/" + name + "_map.png")
-    image_pathname = image_pathname
+    
     if os.path.isfile(image_pathname) == False:
+        
         data = open(map_pathname, 'r')
         Map = Country(file = map_pathname)
         map_size = len(Map.regions)
-        lat_list = []
-        lon_list = []
-        em_list = []
-
+        
         lat_list = [(Map.regions[i].lat) for i in range (map_size)]
         lon_list = [(Map.regions[i].lon) for i in range (map_size)]
         em_list = [(Map.regions[i].emissions) for i in range (map_size)]
 
-        df = em_list
-
-        fig = px.scatter_mapbox(df, lat=lat_list, lon=lon_list,
+        fig = px.scatter_mapbox(data_file = em_list, lat=lat_list, lon=lon_list,
                         color = em_list, color_continuous_scale=px.colors.sequential.Viridis,
                         size_max=30, zoom=1.5)
+        
         fig.update_layout(mapbox_style="carto-positron")
         fig.write_image(image_pathname)
         fig.to_image(format="png", engine="kaleido")
