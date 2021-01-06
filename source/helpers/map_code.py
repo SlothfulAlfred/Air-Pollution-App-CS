@@ -1,16 +1,12 @@
 import plotly.express as px
-import sys
 import os
 
-path_parent = os.path.dirname(os.getcwd())
-os.chdir(path_parent)
 
+data_pathlist = ["docs\canada.txt","docs\\usa.txt","docs\mexico.txt"]
+image_pathlist = ["source/helpers/maps/canada_map.png","source/helpers/maps/usa_map.png","source/helpers/maps/mexico_map.png"]
 
-data_pathlist = ["map\\docs\\canada.txt","map\\docs\\usa.txt","map\\docs\\mexico.txt"]
-image_pathlist = ["map/images/canada_map.png","map/images/usa_map.png","map/images/mexico_map.png"]
-
-from source.helpers.region import Region
-from source.helpers.country import Country
+from region import Region
+from country import Country
 
 i = 0
 while i in range(len(data_pathlist)):
