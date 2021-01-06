@@ -19,6 +19,25 @@ from region import Region
 from country import Country
 
 
+# 1. You're missing inline comments and you're missing documentation for your function
+#
+# 2. If you're taking a Country object as a parameters, why on Earth, the Moon, Mars, Jupiter,
+#    Venus, Galactus, the Milky Way, and Andromeda are you initializing a new Country object?
+#    Do you have a vendetta against efficient code or are you just doing this as a joke? Have you 
+#    ever thought what would happen if we decided to change the format of the file names to something
+#    like 'usa_data.txt'? Then his entire function would throw an error. Also since you got rid of 
+#    the use of indices inside of your list comprehension, why are you still keeping the map_size
+#    variable? Are you really saying that the reason why I suggested that you take a Country 
+#    object as a parameter was so that you could use country.name? Is that an insult to my
+#    intelligence or yours? If all you wanted was the name then it would've been faster to just
+#    take a string as a parameter like you were doing before. The entire method is flawed here.
+#
+# 3. You haven't changed the color scale yet. Make sure to change/remove that soon.
+#
+# 4. Finally, I'm not sure how this works, but, shouldnt't you convert the map to an 
+#    image before you write it? Just make sure that those last two lines are in the 
+#    right order. 
+
 def region_map(country):
     name = country.name
     name = name.lower()
