@@ -1,4 +1,4 @@
-Canada
+Canada, 49.6937, -96.8441
 Newfoundland and Labrador, 11.0, 53.1355, -57.6604
 Prince Edward Island, 1.7, 46.5107, -63.4168
 Nova Scotia, 17.0, 44.6820, -63.7443
