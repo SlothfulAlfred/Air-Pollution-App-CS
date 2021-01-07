@@ -8,9 +8,8 @@
 # Date:       4-01-2021
 #-------------------------------------------------
 
-import Classes.country
+From .country import Country
 import matplotlib.pyplot as plt
-import random
 
 def create_bar_regions(countries):
     '''
@@ -28,8 +27,7 @@ def create_bar_regions(countries):
     False
         if no countries are given or if not given a list
     '''
-    
-   # breaks out of function if it is empty or parameter is not a list
+    # breaks out of function if it is empty or parameter is not a list
     if countries == []:
         return False
     if type(countries) != list:
@@ -90,9 +88,81 @@ def create_bar_regions(countries):
     fig.tight_layout()
     return True
 
+def create_bar_countries(countries):
+    '''
+    A function that creates a bar charts of given countries
+
+    parameters
+    ----------------------
+    countries: list
+        a list of the Country objects that should be represented in the graph
+
+    returns
+    -------------------
+    True: 
+        if the bar graph is succesfully created
+    False
+        if no countries are given or if not given a list
+    '''
+
+    # breaks out of function if it is empty or parameter is not a list
+    if countries == []:
+        return False
+    if type(countries) != list:
+        return False
+
+    # list of labels
+    labels = [country.name for country in countries]
+
+    # Calculating the total greenhouse emissions of the given countries
+    total = sum(country.getEmissions() for country in countries)
+
+    # list of relative percentages
+    sizes = [(country.getEmissions()*100/total) for country in countries]
+
+    # cleaning up tiny values so as to not crowd the graph
+    other_emissions = 0
+    index = len(labels) - 1
+    while index >= 0:
+        if sizes[index] < 1.2:
+            other_emissions += sizes[index]
+            del sizes[index]
+            del labels[index]
+        index -= 1
+
+    if other_emissions > 0:
+        labels.append("Other States")
+        sizes.append(other_emissions)
+
+    # Initializing labels and sorting   
+    labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, sizes)]
+    sizes, labels = zip(*sorted(zip(sizes, labels), reverse=True, key=lambda x: x[0]))
+    # creating a list of x positions for the bars
+    pos = [(i*1.3) for i in range(len(labels))]
+
+    # Creating the bar graph
+    # creating the main figure
+    fig = plt.figure()
+    # adding the chart as a subplot
+    chart = fig.add_subplot(2, 1, 1)
+    # initalizing horizontal bargraph on subplot
+    chart.barh(pos, sizes, height=1.0)
+    # setting the tick labels
+    chart.set_yticks(pos)
+    chart.set_yticklabels(labels)
+    # ensuring that text can always be read
+    # if this is not called, the labels might not 
+    # fit on the screen
+    fig.tight_layout()
+    return True
 
 if __name__ == '__main__':
-    us = Classes.country.Country('USA.txt')
+    us = Country('USA.txt')
+    ca = Country('Canada.txt')
+    me = Country('Mexico.txt')
     countries = [us]
+    continent = [us, ca, me]
     if create_bar_regions(countries):
         plt.show()
+        if create_bar_countries(continent):
+            plt.show()
