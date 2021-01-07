@@ -31,7 +31,6 @@ def region_map(country):
     '''
     name = country.name # Uses name of Country object to set paths both of data and final map image
     name = name.lower()
-    data_pathname = ("docs\\" + name + ".txt") 
     image_pathname = ("source/helpers/images/" + name + "_map.png")
 
     if os.path.isfile(image_pathname) == False:
