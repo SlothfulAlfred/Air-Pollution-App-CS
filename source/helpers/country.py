@@ -1,4 +1,4 @@
-import .region as reg
+import Classes.region as reg
 import logging
 
 class Country():
@@ -12,6 +12,10 @@ class Country():
         defaults to an empty list
     name: string
         Name of the country
+    lat: float
+        latitude of the country
+    lon: float
+        longitutde of the country
 
     Methods
     -------------------------------
@@ -19,8 +23,10 @@ class Country():
         Returns the sum of the emissions of the affiliated regions
     getName() -> str
         Returns the name of the country
-    getRegions -> list
+    getRegions() -> list
         Returns the names of the affiliated regions as a list
+    getCoordinates() -> tuple
+        Returns a tuple of the coordinates 
 
     '''
     def __init__(self, file = None):
@@ -41,7 +47,13 @@ class Country():
         self.regions = []
         if file:
             with open(file, 'r') as f:
-                self.name = f.readline().strip(' \n')
+                first_line = f.readline().strip(' \n').split(',')
+                # initialzing attributes
+                self.name = first_line[0]
+                self.lat = float(first_line[1])
+                self.lon = float(first_line[2])
+
+                # initialzing regions list
                 q = f.readline().strip(' \n').split(',')
                 while(len(q) > 1):
                     self.regions.append(reg.Region(q[0], q[1], q[2], q[3]))
@@ -81,4 +93,17 @@ class Country():
             a list of the names of the affiliated regions
         '''
         return (x.getName() for x in self.regions)
+
+    def getCoordinates(self) -> tuple:
+        '''
+        returns a tuple of the coordinates
+
+        Returns
+        --------------------
+        tuple
+            coordinates
+        '''
+        return tuple((self.lat, self.lon))
+
+
 
