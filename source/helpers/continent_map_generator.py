@@ -18,7 +18,15 @@ import os
 from region import Region
 from country import Country
 
-# 1. You're missing inline comments and you're missing documentation for your function
+# I strongly strongly strongly strongly suggest that you just take a list of Country
+# objects here. You should write your code with the mentality that it might need
+# to be updated and/or maintained in the future so make it easy for yourself.
+
+# In the PEP-8 standards, inline comments need to be separated from the code by 
+# at least 2 indentations (8 spaces). Also you should generally avoid them and 
+# opt for block comments which are like what I'm writing now. These are on a 
+# separate line and refer to all/most of the code that is on the same indentation as 
+# them or in the following block. 
 
 def continent_map():
     '''
@@ -29,6 +37,12 @@ def continent_map():
     data_pathname = ["docs\canada.txt","docs\\usa.txt","docs\\mexico.txt"] #List of pathways to countries' data
     image_pathname = ("source/helpers/images/continent_map.png") #List of pathway for the final map
 
+    # You should use the new built-in lat and lon attributes in the 
+    # Country class. I used these values to create it so the map
+    # won't change much.
+    #
+    # filling out emissions list would be better using list comprehension. 
+    
     lat_list = [49.6937, 39.8283, 19.432608] #List of latitudes of the countries' geographic centres
     lon_list = [-96.8441, -98.5795, -99.133209] #List of longitudes of the countries' geographic centres
     em_list = [] #List of emissions of CO2 (Mt, 2018) of each country
