@@ -1,24 +1,28 @@
+import os
+os.getcwd()
+print(os.path.dirname(os.path.realpath(__file__)))
 from tkinter import *
 from tkinter import messagebox
+from source.helpers.country import Country
+from source.helpers.region import Region
+from source.helpers.country_map_generator import region_map
+from source.helpers.map_delete import map_delete
 import tkinter as tk
 from PIL import Image, ImageTk
-import pathlib
 import webbrowser  # Use to create footer that will link back to GitHub
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 root = Tk()
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 # Frame for all menu buttons
+
+map_delete()
 root.title('Air Pollution App')
 
-
 Icon_path =  "source\gui\images\icon.png"
-Icon = Image.open(Icon_path, mode="r") 
+Icon = Image.open(Icon_path, mode="r")
 
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
-
-
-    
 
 # Footer
 Footer_path =  "source\gui\images\\footer.png"
@@ -31,7 +35,7 @@ def popup():
     result = tk.messagebox.askyesno(title="Redirect Warning", message="This link directs you to the source code for this project. Click YES to proceed to our github or NO to close this message.")
     if result == True:
        webbrowser.open("https://github.com/SlothfulAlfred/Air-Pollution-App-CS")
-    
+
 
 
 footer = Button(text = "Source Code:", image = Footer, compound = LEFT, command = popup)
@@ -82,41 +86,62 @@ CanadaFrame = Frame(MapFrame, width=1400, height=800, bg = 'red')
 USAFrame = Frame(MapFrame, width=1400, height=800, bg = 'brown')
 MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
 
-#image for canada Frame
-canadaMap_image = Canvas(CanadaFrame,height = 500,width = 700)
-canadaMap_path =  "source\gui\images\\canada_map.png"
-imageCanadaMap = Image.open(canadaMap_path, mode= 'r')
-imageCanadaMap = imageCanadaMap.resize((700,500))
+canadaMap_image = Canvas(CanadaFrame, height=500, width=700)
+canadaMap_path = "source\gui\images\\placeholder.png"
+imageCanadaMap = Image.open(canadaMap_path, mode='r')
+imageCanadaMap = imageCanadaMap.resize((700, 500))
 imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
-canadaMap_image.create_image(650,350, image = imageCanadaMap,anchor = CENTER)
-canadaMap_image.place(height=1000, width =2000)
+canadaMap_image.create_image(650, 350, image=imageCanadaMap, anchor=CENTER)
 
-
-
-# Function for when u click button (map frame)
+usaMap_image = Canvas(USAFrame, height=500, width=700)
+usaMap_path = "source\gui\images\\placeholder.png"
+imageusaMap = Image.open(usaMap_path, mode='r')
+imageusaMap = imageusaMap.resize((700, 500))
+imageusaMap = ImageTk.PhotoImage(imageusaMap)
+usaMap_image.create_image(650, 350, image=imageusaMap, anchor=CENTER)
 
 def click(number):
     if number == 1:
         CanadaFrame.lift()
+        canada = Country(file="docs//canada.txt") #image for canada Frame generation
+        region_map(canada)
+        canadaMap_path = "source\gui\images\\canada_map.png"
+        global imageCanadaMap
+        imageCanadaMap = Image.open(canadaMap_path, mode='r')
+        imageCanadaMap = imageCanadaMap.resize((700, 500))
+        imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
+        canadaMap_image.create_image(650, 350, image=imageCanadaMap, anchor=CENTER)
+        canadaMap_image.place(height=1000, width=2000)
     elif number == 2:
         USAFrame.lift()
+        usa = Country(file="docs//usa.txt") #image for canada Frame generation
+        region_map(usa)
+        usaMap_path = "source\gui\images\\united states of america_map.png"
+        global imageusaMap
+        imageusaMap = Image.open(usaMap_path, mode='r')
+        imageusaMap = imageusaMap.resize((700, 500))
+        imageusaMap = ImageTk.PhotoImage(imageusaMap)
+        usaMap_image.create_image(650, 350, image=imageusaMap, anchor=CENTER)
+        usaMap_image.place(height=1000, width=2000)
     elif number == 3:
         MexicoFrame.lift()
 
+
+
 # Images for buttons
-Canada_path =  "\\source\\gui\\images\\canada.png"
+Canada_path =  "source\\gui\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
 CanadaImage = CanadaImage.resize((270,135))
 CanadaImage = ImageTk.PhotoImage(CanadaImage)
-USA_path =  "\\source\\gui\\images\\USA.png"
+USA_path =  "source\\gui\\images\\USA.png"
 USAImage = Image.open(USA_path, mode="r")
 USAImage = USAImage.resize((250,125))
 USAImage = ImageTk.PhotoImage(USAImage)
-Mexico_path =  "\source\gui\images\mexico.png"
+Mexico_path =  "source\gui\images\mexico.png"
 MexicoImage = Image.open(Mexico_path, mode="r")
 MexicoImage = MexicoImage.resize((250,125))
 MexicoImage = ImageTk.PhotoImage(MexicoImage)
-Back_path =  "\source\gui\images\back.png"
+Back_path =  "source\gui\images\\back.png"
 BackImage = Image.open(Back_path, mode="r")
 BackImage = BackImage.resize((100,100))
 BackImage = ImageTk.PhotoImage(BackImage)
@@ -128,7 +153,7 @@ MexicoButton = Button(CountryFrame, compound = TOP, width = 100, height = 100,te
 # Function for when you click the back button(map frame)
 def backClick(number1):
     if number1 == 1:
-        CanadaFrame.lower() 
+        CanadaFrame.lower()
     elif number1 == 2:
         USAFrame.lower()
     elif number1 == 3:
@@ -153,7 +178,7 @@ MexicoFrameGraph = Frame(GraphFrame, width=1400, height=800, bg='green')
 #Function for when u click button (graph frame)
 def clickGraph(number2):
     if number2 == 1:
-        CanadaFrameGraph.lift() 
+        CanadaFrameGraph.lift()
     elif number2 == 2:
         USAFrameGraph.lift()
     elif number2 == 3:
@@ -166,11 +191,11 @@ MexicoButtonGraph = Button(CountryFrameGraph, compound = TOP, width = 100, heigh
 # Function for when you click the back button(graph frame)
 def backclickGraph(number3):
     if number3 == 1:
-        CanadaFrameGraph.lower() 
+        CanadaFrameGraph.lower()
     elif number3 == 2:
         USAFrameGraph.lower()
     elif number3 == 3:
-        MexicoFrameGraph.lower()   
+        MexicoFrameGraph.lower()
 
 # Defining all graph page buttons
 BackButton1Graph = Button(CanadaFrameGraph,compound  = TOP, image = BackImage, text = 'back', command = lambda : backclickGraph(1))
@@ -226,3 +251,4 @@ Backbutton3Graph.place(relx = 0.875, rely =0.65)
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.mainloop()
+map_delete()
