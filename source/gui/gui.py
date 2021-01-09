@@ -10,13 +10,10 @@ root = Tk()
 # Frame for all menu buttons
 root.title('Air Pollution App')
 
-filename = pathlib.Path(__file__).parent.absolute()
-print(filename)
 
-Icon_path = str(filename) + "\images\icon.png"
-Icon = Image.open(Icon_path,mode="r") # This is waaaaay too many zeroes. All you should need for this filepath is "Home Images/icon.png". You're already in the
-                                                  # Air-Pollution-App-CS directory. Also please change 'Home Images' to 'models' or 'images' or anything without capitals and 
-                                                  # without a space.
+Icon_path =  "source\gui\images\icon.png"
+Icon = Image.open(Icon_path, mode="r") 
+
 Icon = ImageTk.PhotoImage(Icon)
 root.iconphoto(False, Icon)
 
@@ -24,7 +21,7 @@ root.iconphoto(False, Icon)
     
 
 # Footer
-Footer_path = str(filename) + "\images\icon.png"
+Footer_path =  "source\gui\images\\footer.png"
 Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19,19))
 Footer = ImageTk.PhotoImage(Footer)
@@ -58,7 +55,7 @@ GraphButton = Button(root, text = "GRAPH", command = GraphFrame.lift)
 
 # Canvas with Label on top of it
 title_image = Canvas(HomeFrame,height = 300,width = 300)
-titleimage_path = str(filename) + "\images/titleimage.png"
+titleimage_path =  "source\gui\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
 image = image.resize((300,300))
 image = ImageTk.PhotoImage(image)
@@ -71,7 +68,7 @@ description = Label(text = "Insert text here")
 
 # Map Canvas with label on top of it
 map_image = Canvas(HomeFrame,height = 300,width = 300)
-mapimage_path = str(filename) + '\images\mapimage.jpg'
+mapimage_path =  'source\gui\images\mapimage.jpg'
 image2 = Image.open(mapimage_path, mode="r")
 image2 = image2.resize((300,300))
 image2 = ImageTk.PhotoImage(image2)
@@ -87,7 +84,7 @@ MexicoFrame = Frame(MapFrame, width=1400, height=800, bg='aqua')
 
 #image for canada Frame
 canadaMap_image = Canvas(CanadaFrame,height = 500,width = 700)
-canadaMap_path = str(filename) + "\images/canada_map.png"
+canadaMap_path =  "source\gui\images\\canada_map.png"
 imageCanadaMap = Image.open(canadaMap_path, mode= 'r')
 imageCanadaMap = imageCanadaMap.resize((700,500))
 imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
@@ -107,19 +104,19 @@ def click(number):
         MexicoFrame.lift()
 
 # Images for buttons
-Canada_path = str(filename) + "\\images\\canada.png"
+Canada_path =  "\\source\\gui\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
 CanadaImage = CanadaImage.resize((270,135))
 CanadaImage = ImageTk.PhotoImage(CanadaImage)
-USA_path = str(filename) + "\\images\\USA.png "
+USA_path =  "\\source\\gui\\images\\USA.png"
 USAImage = Image.open(USA_path, mode="r")
 USAImage = USAImage.resize((250,125))
 USAImage = ImageTk.PhotoImage(USAImage)
-Mexico_path = str(filename) + "\\images\\mexico.png"
+Mexico_path =  "\source\gui\images\mexico.png"
 MexicoImage = Image.open(Mexico_path, mode="r")
 MexicoImage = MexicoImage.resize((250,125))
 MexicoImage = ImageTk.PhotoImage(MexicoImage)
-Back_path = str(filename) + "\\images\\back.png"
+Back_path =  "\source\gui\images\back.png"
 BackImage = Image.open(Back_path, mode="r")
 BackImage = BackImage.resize((100,100))
 BackImage = ImageTk.PhotoImage(BackImage)
