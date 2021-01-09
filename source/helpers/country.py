@@ -59,7 +59,8 @@ class Country():
                     self.regions.append(reg.Region(q[0], q[1], q[2], q[3]))
                     q = f.readline().strip(' \n').split(',')
         else:
-            raise FileNotFoundError(logging.log("File not provided"))
+            logging.error("File not provided")
+            raise FileNotFoundError
 
     def getEmissions(self) -> float:
         '''
