@@ -17,27 +17,25 @@ class Test_Pie_Chart(unittest.TestCase):
     def tearDown(self):
         pass
 
-    # pie chart tests
     def test_pie_chart_regions_params(self):
-        chart = pie.create_pie_regions(cntry)
+        chart = pie.create_pie_regions(5)
         self.assertEqual(chart, False)
         chart = pie.create_pie_regions([])
         self.assertEqual(chart, False)
 
     def test_pie_chart_regions(self):
-        countries = [cntry]
+        countries = cntry
         chart = pie.create_pie_regions(countries)
         self.assertEqual(chart, True)
 
-    # bar chart tests
     def test_bar_chart_regions_params(self):
-        chart = bar.create_bar_regions(cntry)
+        chart = bar.create_bar_regions(3535)
         self.assertEqual(chart, False)
         chart = bar.create_bar_regions([])
         self.assertEqual(chart, False)
 
     def test_bar_chart_regions(self):
-       countries = [cntry]
+       countries = cntry
        chart = bar.create_bar_regions(countries)
        self.assertEqual(chart, True)
 
