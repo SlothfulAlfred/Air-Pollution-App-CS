@@ -8,51 +8,38 @@
 # Date:       4-01-2021
 #-------------------------------------------------
 
-From .country import Country
+from .country import Country
 import matplotlib.pyplot as plt
 
-def create_bar_regions(countries):
+
+def create_bar_regions(count):
     '''
-    A function that creates a bar charts of regions in given countries
+    A function that creates a bar chart of regions in a given country
 
     parameters
     ----------------------
-    countries: list
-        a list of the Country objects that should be represented in the graph
+    countries: Country
+        the Country objects that should be represented in the graph
 
     returns
     -------------------
     True: 
         if the bar graph is succesfully created
     False
-        if no countries are given or if not given a list
+        if not given a Country object
     '''
     # breaks out of function if it is empty or parameter is not a list
-    if countries == []:
-        return False
-    if type(countries) != list:
+    if type(count) != Country:
         return False
 
     # list ojects to store the labels that will be used when creating the bar chart
-    labels = []
-    # Filling temp with the region names
-    for x in countries:
-      temp = x.getRegions()
-      labels += temp
+    labels = count.getRegions()
 
-    # Empty list to store the relative percentages
-    sizes = []
+    # total emissions across the country
+    total = count.getEmissions()
 
-    # Calculating the total greenhouse emissions of the given countries
-    total = 0
-    for x in countries:
-      total += x.getEmissions()
-        
-    # Calculating the percentage emitted by each region
-    for x in countries:
-      for i in x.regions:
-        sizes.append(i.getEmissions() * 100/ total)
-
+    # list to store the relative percentages
+    sizes = [(i.getEmissions() * 100 / total) for i in count.regions]
 
     # cleaning up tiny values so as to not crowd the graph
     other_emissions = 0
@@ -86,6 +73,9 @@ def create_bar_regions(countries):
     # if this is not called, the labels might not 
     # fit on the screen
     fig.tight_layout()
+
+    # saving the figure as an image
+    fig.savefig('source/gui/images/' + count.name + '_bar.png')
     return True
 
 def create_bar_countries(countries):
@@ -110,6 +100,9 @@ def create_bar_countries(countries):
         return False
     if type(countries) != list:
         return False
+    for place in countries:
+        if type(place) != Country:
+            return False
 
     # list of labels
     labels = [country.name for country in countries]
@@ -154,13 +147,16 @@ def create_bar_countries(countries):
     # if this is not called, the labels might not 
     # fit on the screen
     fig.tight_layout()
+
+    # saving the figure as an image
+    fig.savefig('source/gui/images/NA_bar.png')
     return True
 
 if __name__ == '__main__':
     us = Country('USA.txt')
     ca = Country('Canada.txt')
     me = Country('Mexico.txt')
-    countries = [us]
+    countries = us
     continent = [us, ca, me]
     if create_bar_regions(countries):
         plt.show()
