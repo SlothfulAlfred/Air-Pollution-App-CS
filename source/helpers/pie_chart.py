@@ -10,49 +10,37 @@
 #             https://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/pie_features.html
 #-------------------------------------------------
 import matplotlib.pyplot as plt
-From .country import Country
+from .country import Country
 
 
-def create_pie_regions(countries):
+def create_pie_regions(count):
     '''
-    A function that creates a pie charts of the regions in given countries
+    A function that creates a pie charts of the regions in a given country
 
     parameters
     ----------------------
-    countries: list
-        a list of the Country objects that should be represented in the graph
+    countries: Country
+        the Country objects that should be represented in the graph
 
     returns
     -------------------
     True: 
         if the piechart is succesfully created
     False
-        if no countries are given or if not given a list
+        if parameter is not a Country object
     '''
-    # breaks out of function if it is empty
-    if countries == []:
+    # Error handling
+    if type(count) != Country:
         return False
-    if type(countries) != list:
-        return False
-    # list ojects to store the labels that will be used when creating the pie chart
-    labels = []
-    # Filling temp with the region names
-    for x in countries:
-      temp = x.getRegions()
-      labels += temp
 
-    # Empty list to store the relative percentages
-    sizes = []
+    # list ojects to store the labels that will be used when creating the pie chart
+    labels = count.getRegions()
 
     # Calculating the total greenhouse emissions of North America
-    total = 0
-    for x in countries:
-      total += x.getEmissions()
+    total = count.getEmissions()
 
-    # Calculating the relative percentage of total
-    for x in countries:
-      for i in x.regions:
-        sizes.append(i.getEmissions() * 100/ total)
+    # Empty list to store the relative percentages
+    sizes = [(i.getEmissions() * 100 / total) for i in count.regions]
 
     # cleaning up tiny values so as to not crowd the legend
     other_emissions = 0
@@ -74,6 +62,9 @@ def create_pie_regions(countries):
     # Creating the pie chart and the legend
     figure, chart = plt.pie(sizes, radius=1, center=(10, 0))
     plt.legend(figure, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
+
+    # saving graph as image 
+    plt.savefig("source/gui/images/" + count.name + "_pie.png")
     return True
 
 
@@ -91,7 +82,8 @@ def create_pie_countries(countries):
     True: 
         if the piechart is succesfully created
     False
-        if no countries are given or if not given a list
+        if no countries are given, if not given a list, or if the contents of the list
+        are not Country objects
     '''
 
     # breaks out of function if it is empty
@@ -99,6 +91,9 @@ def create_pie_countries(countries):
         return False
     if type(countries) != list:
         return False
+    for country in countries:
+        if type(country) != Country:
+            return False
 
     # list of labels
     labels = [country.name for country in countries]
@@ -130,13 +125,16 @@ def create_pie_countries(countries):
     # Creating the pie chart and the legend
     figure, chart = plt.pie(sizes, radius=1, center=(10, 0))
     plt.legend(figure, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.25, 0.91))
+
+    # saving the graph as an image
+    plt.savefig('source/gui/images/NA_pie.png')
     return True
 
 if __name__ == '__main__':
     us = Country('USA.txt')
     ca = Country('Canada.txt')
     me = Country('Mexico.txt')
-    countries = [us]
+    countries = us
     continent = [us, ca, me]
     if create_pie_regions(countries):
         # plt.show()
