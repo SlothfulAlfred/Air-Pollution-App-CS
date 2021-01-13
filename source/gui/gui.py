@@ -1,13 +1,14 @@
 import os
-os.getcwd()
-print(os.path.dirname(os.path.realpath(__file__)))
 from tkinter import *
 from tkinter import messagebox
-from source.helpers.country import Country
-from source.helpers.region import Region
-from source.helpers.country_map_generator import region_map
-from source.helpers.map_delete import map_delete
+from country import Country
+from region import Region
+from country_map_generator import region_map
+from continent_map_generator import continent_map
+from map_delete import map_delete
+from pie_chart import create_pie_regions,create_pie_countries
 import tkinter as tk
+import matplotlib as plt
 from PIL import Image, ImageTk
 import webbrowser  # Use to create footer that will link back to GitHub
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -105,22 +106,26 @@ def click(number):
         CanadaFrame.lift()
         canada = Country(file="docs//canada.txt") #image for canada Frame generation
         region_map(canada)
-        canadaMap_path = "source\gui\images\\canada_map.png"
+        global canadaMap_path
+        canadaMap_path = "source\gui\images\canada_map.png"
         global imageCanadaMap
         imageCanadaMap = Image.open(canadaMap_path, mode='r')
         imageCanadaMap = imageCanadaMap.resize((700, 500))
         imageCanadaMap = ImageTk.PhotoImage(imageCanadaMap)
+        global canadaMap_image
         canadaMap_image.create_image(650, 350, image=imageCanadaMap, anchor=CENTER)
         canadaMap_image.place(height=1000, width=2000)
     elif number == 2:
         USAFrame.lift()
         usa = Country(file="docs//usa.txt") #image for canada Frame generation
         region_map(usa)
+        global usaMap_path
         usaMap_path = "source\gui\images\\united states of america_map.png"
         global imageusaMap
         imageusaMap = Image.open(usaMap_path, mode='r')
         imageusaMap = imageusaMap.resize((700, 500))
         imageusaMap = ImageTk.PhotoImage(imageusaMap)
+        global usaMap_image
         usaMap_image.create_image(650, 350, image=imageusaMap, anchor=CENTER)
         usaMap_image.place(height=1000, width=2000)
     elif number == 3:
@@ -146,6 +151,7 @@ BackImage = Image.open(Back_path, mode="r")
 BackImage = BackImage.resize((100,100))
 BackImage = ImageTk.PhotoImage(BackImage)
 
+#Generates map buttons for each country
 CanadaButton = Button(CountryFrame, compound = TOP, width = 100, height = 100,text = "Canada", image = CanadaImage, command =  lambda : click(1) )
 USAButton = Button(CountryFrame, compound = TOP, width = 100, height = 100, text = "USA", image = USAImage, command = lambda:  click(2) )
 MexicoButton = Button(CountryFrame, compound = TOP, width = 100, height = 100,text = "Mexico", image = MexicoImage, command = lambda : click(3) )
@@ -171,22 +177,85 @@ CanadaFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'beige')
 USAFrameGraph = Frame(GraphFrame, width=1400, height=800, bg = 'blue')
 MexicoFrameGraph = Frame(GraphFrame, width=1400, height=800, bg='green')
 
+#Generates graph of all countries
 
+canadaGraph_image = Canvas(CanadaFrameGraph, height=500, width=700)
+canadaGraph_path = "source\gui\images\\placeholder.png"
+imageCanadaGraph = Image.open(canadaGraph_path, mode='r')
+imageCanadaGraph = imageCanadaGraph.resize((700, 500))
+imageCanadaGraph = ImageTk.PhotoImage(imageCanadaGraph)
+canadaGraph_image.create_image(650, 350, image=imageCanadaGraph, anchor=CENTER)
 
+usaGraph_image = Canvas(USAFrameGraph, height=500, width=700)
+usaGraph_path = "source\gui\images\\placeholder.png"
+imageusaGraph = Image.open(usaGraph_path, mode='r')
+imageusaGraph = imageusaGraph.resize((700, 500))
+imageusaGraph = ImageTk.PhotoImage(imageusaGraph)
+usaGraph_image.create_image(650, 350, image=imageusaGraph, anchor=CENTER)
 
+canadaGraph_image = Canvas(CanadaFrameGraph, height=500, width=700)
+canadaGraph_path = "source\gui\images\\placeholder.png"
+imageCanadaGraph = Image.open(canadaGraph_path, mode='r')
+imageCanadaGraph = imageCanadaGraph.resize((700, 500))
+imageCanadaGraph = ImageTk.PhotoImage(imageCanadaGraph)
+canadaGraph_image.create_image(650, 350, image=imageCanadaGraph, anchor=CENTER)
 
 #Function for when u click button (graph frame)
 def clickGraph(number2):
     if number2 == 1:
         CanadaFrameGraph.lift()
+        canada = Country(file="docs//canada.txt")  # image for canada Frame generation
+        create_pie_regions(canada)
+        global canadaGraph_path
+        canadaGraph_path = "source\gui\images\Canada_pie.png"
+        global imageCanadaGraph
+        imageCanadaGraph = Image.open(canadaGraph_path, mode='r')
+        imageCanadaGraph = imageCanadaGraph.resize((700, 500))
+        imageCanadaGraph = ImageTk.PhotoImage(imageCanadaGraph)
+        global canadaGraph_image
+        canadaGraph_image.create_image(650, 350, image=imageCanadaGraph, anchor=CENTER)
+        canadaGraph_image.place(height=1000, width=2000)
     elif number2 == 2:
         USAFrameGraph.lift()
+        usa = Country(file="docs//usa.txt")  # image for usa Frame generation
+        create_pie_regions(usa)
+        global usaGraph_path
+        usaGraph_path = "source\gui\images\\United States of America_pie.png"
+        global imageusaGraph
+        imageusaGraph = Image.open(usaGraph_path, mode='r')
+        imageusaGraph = imageusaGraph.resize((700, 500))
+        imageusaGraph = ImageTk.PhotoImage(imageusaGraph)
+        global usaGraph_image
+        usaGraph_image.create_image(650, 350, image=imageusaGraph, anchor=CENTER)
+        usaGraph_image.place(height=1000, width=2000)
     elif number2 == 3:
         MexicoFrameGraph.lift()
 
+#Generates graph buttons for each country
 CanadaButtonGraph = Button(CountryFrameGraph, compound = TOP, width = 100, height = 100,text = "Canada", image = CanadaImage, command =  lambda : clickGraph(1)  )
 USAButtonGraph = Button(CountryFrameGraph, compound = TOP, width = 100, height = 100, text = "USA", image = USAImage, command = lambda:  clickGraph(2) )
 MexicoButtonGraph = Button(CountryFrameGraph, compound = TOP, width = 100, height = 100,text = "Mexico", image = MexicoImage, command = lambda : clickGraph(3)  )
+
+continent_map()
+countryMap_image = Canvas(CountryFrame)
+countryMap_path = "source\gui\images\\continent_map.png"
+imageCountryMap = Image.open(countryMap_path, mode='r')
+imageCountryMap = imageCountryMap.resize((400,300))
+imageCountryMap = ImageTk.PhotoImage(imageCountryMap)
+countryMap_image.create_image(200,150, image=imageCountryMap, anchor=CENTER)
+countryMap_image.place(height = 300,width = 400,relx=0.35,rely=0.1)
+
+canada = Country("docs/canada.txt")
+usa = Country("docs/usa.txt")
+mexico = Country("docs/mexico.txt")
+create_pie_countries([canada,usa,mexico])
+countryGraph_image = Canvas(CountryFrameGraph)
+countryGraph_path = "source/gui/images/NA_pie.png"
+imageCountryGraph = Image.open(countryGraph_path, mode='r')
+imageCountryGraph = imageCountryGraph.resize((400,300))
+imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph)
+countryGraph_image.create_image(200,150, image=imageCountryGraph, anchor=CENTER)
+countryGraph_image.place(height = 300,width = 400,relx=0.35,rely=0.1)
 
 # Function for when you click the back button(graph frame)
 def backclickGraph(number3):
@@ -219,9 +288,9 @@ CountryFrame.place(x=0, y=0)
 CountryFrame.lift()
 
 #button placements(location) for (map frame)
-MexicoButton.place(relx=0.725, rely = 0.35, relwidth =0.2,relheight =0.3)
-CanadaButton.place(relx = 0.055, rely = 0.35, relwidth =0.2,relheight =0.3)
-USAButton.place(relx = 0.39, rely = 0.35, relwidth =0.2,relheight =0.3)
+MexicoButton.place(relx=0.725, rely = 0.5, relwidth =0.2,relheight =0.3)
+CanadaButton.place(relx = 0.055, rely = 0.5, relwidth =0.2,relheight =0.3)
+USAButton.place(relx = 0.39, rely = 0.5, relwidth =0.2,relheight =0.3)
 BackButton1.place(relx = 0.875, rely =0.65)
 BackButton2.place(relx = 0.875, rely =0.65)
 Backbutton3.place(relx = 0.875, rely =0.65)
@@ -236,9 +305,9 @@ CountryFrameGraph.place(x=0, y=0)
 CountryFrameGraph.lift()
 
 #button placements(location) for (Graph frame)
-MexicoButtonGraph.place(relx=0.725, rely = 0.35, relwidth =0.2,relheight =0.3)
-CanadaButtonGraph.place(relx = 0.055, rely = 0.35, relwidth =0.2,relheight =0.3)
-USAButtonGraph.place(relx = 0.39, rely = 0.35, relwidth =0.2,relheight =0.3)
+MexicoButtonGraph.place(relx=0.725, rely = 0.5, relwidth =0.2,relheight =0.3)
+CanadaButtonGraph.place(relx = 0.055, rely = 0.5, relwidth =0.2,relheight =0.3)
+USAButtonGraph.place(relx = 0.39, rely = 0.5, relwidth =0.2,relheight =0.3)
 BackButton1Graph.place(relx = 0.875, rely =0.65)
 BackButton2Graph.place(relx = 0.875, rely =0.65)
 Backbutton3Graph.place(relx = 0.875, rely =0.65)
