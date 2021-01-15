@@ -1,11 +1,11 @@
-import region as reg
+import Classes.region as reg
 import logging
-
 
 # Pointer (more like a file index) to current file position to aid initialization of 
 # multiple Country objects
 
-ptr = 0
+ptr = 0 #Good idea, if its possible see if you can implement it into the Region Class (there are going to be more of them than Country objects)
+
 class Country():
     '''
     An object that contains a list of associated Region objects (ex. Canada contains provinces/territories)
@@ -17,15 +17,21 @@ class Country():
         defaults to an empty list
     name: string
         Name of the country
+    lat: float
+        latitude of the country
+    lon: float
+        longitutde of the country
 
     Methods
     -------------------------------
-    getEmisssions() -> float
+    getEmisssions() -> float #Typo (Emissions)
         Returns the sum of the emissions of the affiliated regions
-    getName() -> str
+    getName() -> str #This function feels redundant, as name is a callable attribute
         Returns the name of the country
-    getRegions -> list
+    getRegions() -> list 
         Returns the names of the affiliated regions as a list
+    getCoordinates() -> tuple #This function feels redundant, as the latitude and longitude are callable attributes. Additionally, it seems strange to call them as a tuple, rather than a string or list. Is there any specific advantages to tuples?
+        Returns a tuple of the coordinates 
 
     '''
     def __init__(self, file = None):
@@ -46,16 +52,20 @@ class Country():
         self.regions = []
         if file:
             with open(file, 'r') as f:
-                f.seek(0, ptr)
-                self.name = f.readline().strip(' \n')
+                first_line = f.readline().strip(' \n').split(',')
+                # initialzing attributes
+                self.name = first_line[0]
+                self.lat = float(first_line[1])
+                self.lon = float(first_line[2])
+
+                # initialzing regions list
                 q = f.readline().strip(' \n').split(',')
                 while(len(q) > 1):
                     self.regions.append(reg.Region(q[0], q[1], q[2], q[3]))
-                    q = f.readline().strip(' \n').split(',')
-                    global ptr
-                    ptr = f.tell()
+                    q = f.readline().strip(' \n').split(',') #Very clean, no changes here!
         else:
-            raise FileNotFoundError(logging.log("File not provided"))
+            logging.error("File not provided")
+            raise FileNotFoundError
 
     def getEmissions(self) -> float:
         '''
@@ -66,9 +76,9 @@ class Country():
         float
             sum of the emissions of the afilliated regions
         '''
-        return sum(x.getEmissions() for x in self.regions)
+        return sum(x.getEmissions() for x in self.regions) #Very clean, no changes here!
 
-    def getName(self) -> str:
+    def getName(self) -> str: 
         '''
         returns the name of the country
 
@@ -77,7 +87,7 @@ class Country():
         string
             the name of the country
         '''
-        return self.name
+        return self.name #Redundant, see methods
 
     def getRegions(self) -> list:
         '''
@@ -88,5 +98,16 @@ class Country():
         list
             a list of the names of the affiliated regions
         '''
-        return (x.getName() for x in self.regions)
+        return (x.getName() for x in self.regions) #Very clean, no changes here!
+
+    def getCoordinates(self) -> tuple:
+        '''
+        returns a tuple of the coordinates
+
+        Returns
+        --------------------
+        tuple
+            coordinates
+        '''
+        return tuple((self.lat, self.lon)) #Redundant, see methods
 
