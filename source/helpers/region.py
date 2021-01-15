@@ -1,3 +1,13 @@
+#-------------------------------------------------
+# Name:       region.py
+# Purpose:    A class that stores information about
+#             the greenhouse gas emissions and the coordinates
+#             of a given region
+#
+# Author:     Alfred Mikhael
+# Date:       15-01-2021
+#-------------------------------------------------
+
 class Region():
     """
     An object that contains the air pollution data and the geocoordinates of a certain area / region
