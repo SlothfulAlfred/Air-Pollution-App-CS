@@ -19,13 +19,13 @@ class Country():
 
     Methods
     -------------------------------
-    getEmisssions() -> float
+    getEmissions() -> float
         Returns the sum of the emissions of the affiliated regions
-    getName() -> str
-        Returns the name of the country
+    getName() -> str #Why is this a function, it simply calls a single attribute that can already be obtained with OBJECTNAME.name().
+        Returns the name of the country 
     getRegions() -> list
         Returns the names of the affiliated regions as a list
-    getCoordinates() -> tuple
+    getCoordinates() -> tuple #Feels uneccessary, len and lon are already attributes that can be called. Additionally, the instances where a program would need a tuple as an input seems rare, so I dont see why you chose it specifically.
         Returns a tuple of the coordinates 
 
     '''
@@ -82,7 +82,7 @@ class Country():
         string
             the name of the country
         '''
-        return self.name
+        return self.name 
 
     def getRegions(self) -> list:
         '''
