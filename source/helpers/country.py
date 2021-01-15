@@ -1,3 +1,11 @@
+#-------------------------------------------------
+# Name:       country.py
+# Purpose:    A class that stores information about a country,
+#             it's affiliated regions, and it's greenhouse gas emissions
+#
+# Author:     Alfred Mikhael
+# Date:       15-01-2021
+#-------------------------------------------------
 import .region as reg
 import logging
 
