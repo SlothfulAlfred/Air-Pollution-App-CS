@@ -1,4 +1,4 @@
-import Classes.region as reg
+import .region as reg
 import logging
 
 class Country():
