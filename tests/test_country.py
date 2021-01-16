@@ -1,6 +1,12 @@
+#-------------------------------------------------
+# Name:       test_country.py
+# Purpose:    tests the functionality of the country.py module
+#
+# Author:     Alfred Mikhael
+# Date:       16-01-2021
+#-------------------------------------------------
 import unittest
 from Classes.country import Country
-
 
 class Test_Country(unittest.TestCase):
     def setUp(self):
