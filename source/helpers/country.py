@@ -101,7 +101,7 @@ class Country():
         list
             a list of the names of the affiliated regions
         '''
-        return (x.getName() for x in self.regions)
+        return [x.getName() for x in self.regions]
 
     def getCoordinates(self) -> tuple:
         '''
