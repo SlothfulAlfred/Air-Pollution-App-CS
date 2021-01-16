@@ -1,3 +1,10 @@
+#-------------------------------------------------
+# Name:       test_region.py
+# Purpose:    tests the functionality of the region.py module
+#
+# Author:     Alfred Mikhael
+# Date:       16-01-2021
+#-------------------------------------------------
 import unittest
 import source.helpers.region
 
