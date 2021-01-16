@@ -1,3 +1,11 @@
+#-------------------------------------------------
+# Name:       chart_test.py
+# Purpose:    tests the functions of pie_chart.py and
+#             bar_chart.py using the unittest module
+#
+# Author:     Alfred Mikhael
+# Date:       16-01-2021
+#-------------------------------------------------
 import unittest
 import source.helpers.pie_chart as pie
 import source.helpers.bar_chart as bar
