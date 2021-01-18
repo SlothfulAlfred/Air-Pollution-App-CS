@@ -29,7 +29,7 @@ def create_pie_regions(count):
         if parameter is not a Country object
     '''
     # Error handling
-    if type(count) != Classes.country.Country:
+    if type(count) != Country:
         return False
 
     # list ojects to store the labels that will be used when creating the pie chart
@@ -61,7 +61,7 @@ def create_pie_regions(count):
     fig, chart = plt.subplots()
     wedges, dummy = chart.pie(sizes, radius=1, autopct=None)   
     chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
-    fig.savefig("C:/users/alfre/desktop/" + count.name + "_pie.png")
+    fig.savefig("source/gui/images/" + count.name + "_pie.png")
     return True
 
 
@@ -89,7 +89,7 @@ def create_pie_countries(countries):
     if type(countries) != list:
         return False
     for country in countries:
-        if type(country) != Classes.country.Country:
+        if type(country) != Country:
             return False
 
     # list of labels
@@ -125,7 +125,7 @@ def create_pie_countries(countries):
     wedges, dummy = chart.pie(sizes, radius=1, autopct=None)
     # creating legend and saving figure
     chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
-    fig.savefig("C:/users/alfre/desktop/" + count.name + "_pie.png")
+    fig.savefig("source/gui/images/" + count.name + "_pie.png")
     return True
 
 if __name__ == '__main__':
