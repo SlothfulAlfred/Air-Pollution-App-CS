@@ -16,7 +16,7 @@ class Test_Pie_Chart(unittest.TestCase):
     def setUp(self):
         global cntry
         f = open('chart_data.txt', 'w')
-        f.write("Country One\n")
+        f.write("Country One, 30, 30\n")
         f.write("Region One, 1.00, 2.00, 3.00\n" + "Region Two, 199.99, 44.88, 153.888\n")
         f.write('\n')
         f.close()
