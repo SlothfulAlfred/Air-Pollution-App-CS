@@ -125,7 +125,7 @@ def create_pie_countries(countries):
     wedges, dummy = chart.pie(sizes, radius=1, autopct=None)
     # creating legend and saving figure
     chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
-    fig.savefig("source/gui/images/" + count.name + "_pie.png")
+    fig.savefig("source/gui/images/NA_pie.png")
     return True
 
 if __name__ == '__main__':
