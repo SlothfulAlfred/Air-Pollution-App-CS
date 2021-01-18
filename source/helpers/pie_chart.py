@@ -10,8 +10,7 @@
 #             https://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/pie_features.html
 #-------------------------------------------------
 import matplotlib.pyplot as plt
-from .country import Country
-
+from source.helpers.country import Country
 
 def create_pie_regions(count):
     '''
@@ -30,7 +29,7 @@ def create_pie_regions(count):
         if parameter is not a Country object
     '''
     # Error handling
-    if type(count) != Country:
+    if type(count) != Classes.country.Country:
         return False
 
     # list ojects to store the labels that will be used when creating the pie chart
@@ -59,12 +58,10 @@ def create_pie_regions(count):
     labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, sizes)]
     sizes, labels = zip(*sorted(zip(sizes, labels), reverse=True, key=lambda x: x[0]))
 
-    # Creating the pie chart and the legend
-    figure, chart = plt.pie(sizes, radius=1, center=(10, 0))
-    plt.legend(figure, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
-
-    # saving graph as image 
-    plt.savefig("source/gui/images/" + count.name + "_pie.png")
+    fig, chart = plt.subplots()
+    wedges, dummy = chart.pie(sizes, radius=1, autopct=None)   
+    chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
+    fig.savefig("C:/users/alfre/desktop/" + count.name + "_pie.png")
     return True
 
 
@@ -92,7 +89,7 @@ def create_pie_countries(countries):
     if type(countries) != list:
         return False
     for country in countries:
-        if type(country) != Country:
+        if type(country) != Classes.country.Country:
             return False
 
     # list of labels
@@ -121,13 +118,14 @@ def create_pie_countries(countries):
     # Initializing labels and sorting   
     labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, sizes)]
     sizes, labels = zip(*sorted(zip(sizes, labels), reverse=True, key=lambda x: x[0]))
-
-    # Creating the pie chart and the legend
-    figure, chart = plt.pie(sizes, radius=1, center=(10, 0))
-    plt.legend(figure, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.25, 0.91))
-
-    # saving the graph as an image
-    plt.savefig('source/gui/images/NA_pie.png')
+    
+    # creating subplots
+    fig, chart = plt.subplots()
+    # creating list of wedges for legend
+    wedges, dummy = chart.pie(sizes, radius=1, autopct=None)
+    # creating legend and saving figure
+    chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
+    fig.savefig("C:/users/alfre/desktop/" + count.name + "_pie.png")
     return True
 
 if __name__ == '__main__':
@@ -137,6 +135,6 @@ if __name__ == '__main__':
     countries = us
     continent = [us, ca, me]
     if create_pie_regions(countries):
-        # plt.show()
+        plt.show()
         if create_pie_countries(continent):
             plt.show()
