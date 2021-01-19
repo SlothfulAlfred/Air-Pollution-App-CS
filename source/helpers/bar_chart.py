@@ -36,25 +36,26 @@ def create_bar_regions(count):
     labels = count.getRegions()
 
     # total emissions across the country
-    total = count.getEmissions()
+    # total = count.getEmissions()
 
     # list to store the relative percentages
-    sizes = [(i.getEmissions() * 100 / total) for i in count.regions]
+    sizes = [i.getEmissions() for i in count.regions]
 
     # cleaning up tiny values so as to not crowd the graph
     other_emissions = 0
     index = len(labels) - 1
     while index >= 0:
-        if sizes[index] < 1.2:
+        if sizes[index] < 65:
             other_emissions += sizes[index]
             del sizes[index]
             del labels[index]
         index -= 1
-    labels.append("Other States")
-    sizes.append(other_emissions)
+    if other_emissions:
+        labels.append("Other States")
+        sizes.append(other_emissions)
 
     # Initializing labels and sorting   
-    labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, sizes)]
+    labels = ['{0} - {1} Mt'.format(i,round(j, 0)) for i,j in zip(labels, sizes)]
     sizes, labels = zip(*sorted(zip(sizes, labels), reverse=True, key=lambda x: x[0]))
     # creating a list of x positions for the bars
     pos = [(i*1.3) for i in range(len(labels))]
@@ -69,11 +70,12 @@ def create_bar_regions(count):
     # setting the tick labels
     chart.set_yticks(pos)
     chart.set_yticklabels(labels)
+    chart.set_title(label=f"Carbon Emissions of states in {count.name} in 2018")
+    chart.set_xlabel("Equivalent Carbon Emissions (Megatons)")
     # ensuring that text can always be read
     # if this is not called, the labels might not 
     # fit on the screen
     fig.tight_layout()
-
     # saving the figure as an image
     fig.savefig('source/gui/images/' + count.name + '_bar.png')
     return True
@@ -108,10 +110,10 @@ def create_bar_countries(countries):
     labels = [country.name for country in countries]
 
     # Calculating the total greenhouse emissions of the given countries
-    total = sum(country.getEmissions() for country in countries)
+    # total = sum(country.getEmissions() for country in countries)
 
     # list of relative percentages
-    sizes = [(country.getEmissions()*100/total) for country in countries]
+    sizes = [country.getEmissions() for country in countries]
 
     # cleaning up tiny values so as to not crowd the graph
     other_emissions = 0
@@ -128,7 +130,7 @@ def create_bar_countries(countries):
         sizes.append(other_emissions)
 
     # Initializing labels and sorting   
-    labels = ['{0} - {1:1.2f} %'.format(i,j) for i,j in zip(labels, sizes)]
+    labels = ['{0} - {1} Mt'.format(i, round(j, 0)) for i,j in zip(labels, sizes)]
     sizes, labels = zip(*sorted(zip(sizes, labels), reverse=True, key=lambda x: x[0]))
     # creating a list of x positions for the bars
     pos = [(i*1.3) for i in range(len(labels))]
@@ -143,11 +145,12 @@ def create_bar_countries(countries):
     # setting the tick labels
     chart.set_yticks(pos)
     chart.set_yticklabels(labels)
+    chart.set_title(f"Carbon Emissions of North American countries in 2018")
+    chart.set_xlabel("Equivalent Carbon Emissions (Megatons)")
     # ensuring that text can always be read
     # if this is not called, the labels might not 
     # fit on the screen
     fig.tight_layout()
-
     # saving the figure as an image
     fig.savefig('source/gui/images/NA_bar.png')
     return True
