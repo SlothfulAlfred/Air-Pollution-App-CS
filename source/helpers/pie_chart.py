@@ -61,6 +61,7 @@ def create_pie_regions(count):
     fig, chart = plt.subplots()
     wedges, dummy = chart.pie(sizes, radius=1, autopct=None)   
     chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
+    chart.set_title(f'2018 Carbon Emissions of {count.name} by state')
     fig.savefig("source/gui/images/" + count.name + "_pie.png")
     return True
 
@@ -125,6 +126,7 @@ def create_pie_countries(countries):
     wedges, dummy = chart.pie(sizes, radius=1, autopct=None)
     # creating legend and saving figure
     chart.legend(wedges, labels, loc='center left', fontsize=6, bbox_to_anchor=(-0.3, 0.51))
+    chart.set_title("2018 Carbon Emissions of North America by Country")
     fig.savefig("source/gui/images/NA_pie.png")
     return True
 
