@@ -77,7 +77,7 @@ def create_bar_regions(count):
     # fit on the screen
     fig.tight_layout()
     # saving the figure as an image
-    fig.savefig('source/gui/images/' + count.name + '_bar.png')
+    fig.savefig('source/images/' + count.name + '_bar.png')
     return True
 
 def create_bar_countries(countries):
@@ -152,7 +152,7 @@ def create_bar_countries(countries):
     # fit on the screen
     fig.tight_layout()
     # saving the figure as an image
-    fig.savefig('source/gui/images/NA_bar.png')
+    fig.savefig('source/images/NA_bar.png')
     return True
 
 if __name__ == '__main__':

@@ -15,8 +15,8 @@
 
 import plotly.express as px
 import os
-from region import Region
-from country import Country
+from source.helpers.region import Region
+from source.helpers.country import Country
 
 def region_map(country):
     '''
@@ -31,7 +31,7 @@ def region_map(country):
     '''
     name = country.name # Uses name of Country object to set paths both of data and final map image
     name = name.lower()
-    image_pathname = ("source/helpers/images/" + name + "_map.png")
+    image_pathname = ("source/images/" + name + "_map.png")
 
     if os.path.isfile(image_pathname) == False:
 

@@ -18,7 +18,7 @@ from source.helpers.country import Country
 from source.helpers.region import Region
 from source.helpers.country_map_generator import region_map
 from source.helpers.continent_map_generator import continent_map
-from source.helpers.map_delete import map_delete
+from source.helpers.deletion import mapDelete, graphDelete
 from source.helpers.pie_chart import create_pie_regions, create_pie_countries
 from source.helpers.bar_chart import create_bar_countries, create_bar_regions
 import matplotlib as plt
@@ -35,18 +35,19 @@ usa = Country("docs/usa.txt")
 mexico = Country("docs/mexico.txt")
 
 # Clears any pre-generated maps
-map_delete()
+mapDelete('source/images/')
+graphDelete('source/images/')
 create_bar = True
 
 # Initializing of title and icon image
 root.title('Air Pollution App')
-Icon_path = r"source\gui\images\\icon.png"
+Icon_path = r"source\images\\icon.png"
 Icon = Image.open(Icon_path, mode="r")
 Icon = ImageTk.PhotoImage(file=Icon_path, master=root)
 root.iconphoto(False, Icon)
 
 # Footer which links to Source Code
-Footer_path = r"source\gui\images\\footer.png"
+Footer_path = r"source\images\\footer.png"
 Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19, 19))
 Footer = ImageTk.PhotoImage(Footer)
@@ -86,7 +87,7 @@ GraphButton = Button(root, text="GRAPH", command=GraphFrame.lift, relief=FLAT)
 
 # Creation of Home Page images + text
 title_image = Canvas(HomeFrame, height=300, width=300)
-titleimage_path = r"source\gui\images\\titleimage.png"
+titleimage_path = r"source\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
 image = image.resize((300, 300))
 image = ImageTk.PhotoImage(image, master=root)
@@ -96,7 +97,7 @@ title_image.create_text(150, 150, width=300, text="In the modern day, keeping co
 
 description = Label(text="Insert text here")
 map_image = Canvas(HomeFrame, height=300, width=300)
-mapimage_path = r'source\gui\images\mapimage.jpg'
+mapimage_path = r'source\images\mapimage.jpg'
 image2 = Image.open(mapimage_path, mode="r")
 image2 = image2.resize((300, 300))
 image2 = ImageTk.PhotoImage(image2, master=root)
@@ -112,7 +113,7 @@ map_image.create_text(
 CountryFrame = Frame(MapFrame, width=1400, height=800)
 continent_map()
 countryMap_image = Canvas(CountryFrame)
-countryMap_path = r"source\gui\images\\continent_map.png"
+countryMap_path = r"source\images\\continent_map.png"
 imageCountryMap = Image.open(countryMap_path, mode='r')
 imageCountryMap = imageCountryMap.resize((700, 525))
 imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
@@ -138,7 +139,7 @@ def click(number):
     if number == 1:
         # Generates map of Canada
         region_map(canada)
-        countryMap_path = r"source\gui\images\canada_map.png"
+        countryMap_path = r"source\images\canada_map.png"
         imageCountryMap = Image.open(countryMap_path, mode='r')
         imageCountryMap = imageCountryMap.resize((700, 525))
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
@@ -148,7 +149,7 @@ def click(number):
     elif number == 2:
         # Generates map of USA
         region_map(usa)
-        countryMap_path = r"source\gui\images\\USA_map.png"
+        countryMap_path = r"source\images\USA_map.png"
         imageCountryMap = Image.open(countryMap_path, mode='r')
         imageCountryMap = imageCountryMap.resize((700, 525))
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
@@ -158,7 +159,7 @@ def click(number):
     elif number == 3:
         # Generates map of North America
         continent_map()
-        countryMap_path = r"source\gui\images\\continent_map.png"
+        countryMap_path = r"source\images\\continent_map.png"
         imageCountryMap = Image.open(countryMap_path, mode='r')
         imageCountryMap = imageCountryMap.resize((700, 525))
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
@@ -168,15 +169,15 @@ def click(number):
 
 
 # Buttons to select maps
-Canada_path = "source\\gui\\images\\canada.png"
+Canada_path = "source\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
 CanadaImage = CanadaImage.resize((270, 135))
 CanadaImage = ImageTk.PhotoImage(CanadaImage, master=root)
-USA_path = "source\\gui\\images\\USA.png"
+USA_path = "source\\images\\USA.png"
 USAImage = Image.open(USA_path, mode="r")
 USAImage = USAImage.resize((250, 125))
 USAImage = ImageTk.PhotoImage(USAImage, master=root)
-NA_path = r"source\gui\images\\NA.png"
+NA_path = r"source\images\\NA.png"
 NA_Image = Image.open(NA_path, mode="r")
 NA_Image = NA_Image.resize((250, 125))
 NA_Image = ImageTk.PhotoImage(NA_Image, master=root)
@@ -211,7 +212,7 @@ NA_Button = Button(
 CountryFrameGraph = Frame(GraphFrame, width=1400, height=800)
 create_pie_countries([canada, usa, mexico])
 countryGraph_image = Canvas(CountryFrameGraph)
-countryGraph_path = "source/gui/images/NA_pie.png"
+countryGraph_path = "source\images/NA_pie.png"
 imageCountryGraph = Image.open(countryGraph_path, mode='r')
 imageCountryGraph = imageCountryGraph.resize((700, 525))
 imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
@@ -234,9 +235,9 @@ def clickGraph(number2):
     global create_bar
     if number2 == 1:
         if create_bar:
-            countryGraph_path = r"source\gui\images\Canada_bar.png"
+            countryGraph_path = r"source\images\Canada_bar.png"
         else:
-            countryGraph_path = r"source\gui\images\Canada_pie.png"
+            countryGraph_path = r"source\images\Canada_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_regions(canada)
         if not os.path.isfile(countryGraph_path) and create_bar == False:
@@ -250,9 +251,9 @@ def clickGraph(number2):
         countryGraph_image.place(width=1280, height=720, relx=0.119, rely=-0.1)
     elif number2 == 2:
         if create_bar:
-            countryGraph_path = r"source\gui\images/USA_bar.png"
+            countryGraph_path = r"source\images\\USA_bar.png"
         else:
-            countryGraph_path = r"source\gui\images/USA_pie.png"
+            countryGraph_path = r"source\images/USA_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_regions(usa)
         if not os.path.isfile(countryGraph_path) and create_bar == False:
@@ -265,11 +266,11 @@ def clickGraph(number2):
             600, 350, image=imageCountryGraph, anchor=CENTER)
         countryGraph_image.place(width=1280, height=720, relx=0.119, rely=-0.1)
     elif number2 == 3:
-        countryGraph_path = r"source\gui\images/NA_pie.png"
+        countryGraph_path = r"source\images/NA_pie.png"
         if create_bar:
-            countryGraph_path = "source/gui/images/NA_bar.png"
+            countryGraph_path = "source\images/NA_bar.png"
         else:
-            countryGraph_path = "source/gui/images/NA_pie.png"
+            countryGraph_path = "source\images/NA_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_countries([canada, usa, mexico])
         if not os.path.isfile(countryGraph_path) and create_bar == False:
@@ -307,7 +308,7 @@ NA_ButtonGraph = Button(
     relief=FLAT)
 
 # Switches between pie and bar graphs
-toggle_image = "source/gui/images/ToggleBar.png"
+toggle_image = "source\images/ToggleBar.png"
 
 
 def graph_switch():
@@ -322,7 +323,7 @@ def graph_switch():
     create_bar = not create_bar
     country_list = ["Canada","USA","NA"]
     if not create_bar:
-        toggle_image = "source/gui/images/ToggleBar.png"
+        toggle_image = "source\images/ToggleBar.png"
         ToggleImage = Image.open(toggle_image, mode="r")
         ToggleImage = ToggleImage.resize((100, 100))
         ToggleImage = ImageTk.PhotoImage(ToggleImage, master=root)
@@ -340,7 +341,7 @@ def graph_switch():
             if countryGraph_path.find(country_list[i]) != -1:
                 clickGraph(i+1)
     else:
-        toggle_image = "source/gui/images/TogglePie.png"
+        toggle_image = "source\images/TogglePie.png"
         ToggleImage = Image.open(toggle_image, mode="r")
         ToggleImage = ToggleImage.resize((100, 100))
         ToggleImage = ImageTk.PhotoImage(ToggleImage, master=root)
@@ -406,5 +407,6 @@ root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(),
 
 # Exits application, deletes all maps/graphs
 root.mainloop()
-map_delete()
+mapDelete('source/images/')
+graphDelete('source/images/')
 

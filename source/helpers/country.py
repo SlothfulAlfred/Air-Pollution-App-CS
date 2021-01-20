@@ -6,7 +6,7 @@
 # Author:     Alfred Mikhael
 # Date:       15-01-2021
 #-------------------------------------------------
-import .region as reg
+import source.helpers.region as reg
 import logging
 
 class Country():

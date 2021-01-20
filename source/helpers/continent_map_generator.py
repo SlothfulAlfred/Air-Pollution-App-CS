@@ -15,8 +15,8 @@
 
 import plotly.express as px
 import os
-from region import Region
-from country import Country
+from source.helpers.region import Region
+from source.helpers.country import Country
 
 def continent_map():
     '''
@@ -29,7 +29,7 @@ def continent_map():
 
 
     #Data Order for All Lists: Canada, USA, Mexico
-    image_pathname = ("source/gui/images/continent_map.png")        #List of pathway for the final map
+    image_pathname = ("source/images/continent_map.png")        #List of pathway for the final map
 
     country_list = []        #List of all countries (contains Country objects)
     lon_list = []         #List of longitudes of the countries' geographic centres
