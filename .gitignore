@@ -1,1 +1,4 @@
-
+source/helpers/__pycache__/
+*.log
+input.txt
+chart_data.txt
