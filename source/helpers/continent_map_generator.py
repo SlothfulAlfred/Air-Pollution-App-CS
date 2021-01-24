@@ -49,10 +49,10 @@ def continent_map():
         lon_list = [country_list[x].lon for x in range(len(country_list))]
 
         #Generates map
-        fig = px.scatter_mapbox(data_frame=em_list, lat=lat_list, lon=lon_list,
+        fig =px.scatter_mapbox(template="plotly",data_frame=em_list, lat=lat_list, lon=lon_list,
                                 color=em_list, color_continuous_scale=px.colors.sequential.Bluered,
                                 color_continuous_midpoint = 700, range_color = (0,1700),
-                                size_max=100, zoom=1.5)
+                                size_max=100, zoom=1.5,labels={"color":"CO2 Emissions (Mt of CO2)"},title="Emissions of North America, divided by country")
         fig.update_layout(mapbox_style="carto-positron")        #Sets map style
         fig.to_image(format="png", engine="kaleido")
         fig.write_image(image_pathname)         #Exports map

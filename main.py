@@ -21,10 +21,10 @@ from source.helpers.continent_map_generator import continent_map
 from source.helpers.deletion import mapDelete, graphDelete
 from source.helpers.pie_chart import create_pie_regions, create_pie_countries
 from source.helpers.bar_chart import create_bar_countries, create_bar_regions
+import plotly.express as px
 import matplotlib as plt
 from PIL import Image, ImageTk
 import webbrowser  # Use to create footer that will link back to GitHub
-
 
 # Initializes window
 root = Tk()
@@ -110,7 +110,7 @@ map_image.create_text(
     text="With the aim of reducing the effects of climate change, our application will provide statistical and visual methods of understanding the impact of some of the world's largest countries on Earth's climate, based on data from reputable sources. ")
 
 # Map Page Initialization
-CountryFrame = Frame(MapFrame, width=1400, height=800)
+CountryFrame = Frame(master=MapFrame, width=1400, height=800)
 continent_map()
 countryMap_image = Canvas(CountryFrame)
 countryMap_path = r"source\images\\continent_map.png"
@@ -410,3 +410,4 @@ root.mainloop()
 mapDelete('source/images/')
 graphDelete('source/images/')
 
+#if __name__ == '__main__':

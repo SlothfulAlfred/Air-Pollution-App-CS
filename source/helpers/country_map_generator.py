@@ -38,11 +38,12 @@ def region_map(country):
         lat_list = [x.lat for x in country.regions]  #Loads the latitudes for the Country object's regions
         lon_list = [x.lon for x in country.regions]  #Loads the longitudes for the Country object's regions
         em_list = [x.emissions for x in country.regions]  #Loads the emissions data for the Country object's regions
+        header = str("Emissions of " + country.name + ", divided by province/state")
 
         fig = px.scatter_mapbox(data_frame=em_list, lat=lat_list, lon=lon_list, #Generates map of country
                                 color=em_list, color_continuous_scale=px.colors.sequential.Bluered,
                                 color_continuous_midpoint=20, range_color=(0, 170),
-                                size_max=30, zoom=1.5)
+                                size_max=30, zoom=1.5,labels={"color":"CO2 Emissions (Mt of CO2)"},title = header)
 
         fig.update_layout(mapbox_style="carto-positron") #Sets map style
         fig.to_image(format="png", engine="kaleido")
