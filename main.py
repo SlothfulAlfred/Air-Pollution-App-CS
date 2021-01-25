@@ -72,7 +72,7 @@ footer = Button(
     relief=FLAT)
 footer.place(width=100, height=30, rely=0.9525, relx=0.921)
 
-# Generating Home, Map and Graph pages
+# Generating Home, Map and Graph pages.
 GraphFrame = Frame(root)
 GraphFrame.place(anchor=CENTER, relx=0.5, rely=0.5, relwidth=1, relheight=0.9)
 MapFrame = Frame(root)
