@@ -28,6 +28,11 @@ import webbrowser  # Use to create footer that will link back to GitHub
 
 # Initializes window
 root = Tk()
+height_px = root.winfo_screenheight()
+width_px = root.winfo_screenwidth()
+print(width_px)
+print(height_px)
+
 
 # Initialize Country objects used for maps and graphs
 canada = Country("docs/canada.txt")
