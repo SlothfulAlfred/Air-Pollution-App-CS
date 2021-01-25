@@ -75,7 +75,7 @@ footer = Button(
     compound=LEFT,
     command=popup,
     relief=FLAT)
-footer.place(width=100, height=30, rely=0.9525, relx=0.921)
+footer.place(relwidth=0.08, relheight=0.0277777777777778, rely=0.9525, relx=0.921)
 
 # Generating Home, Map and Graph pages
 GraphFrame = Frame(root)
@@ -91,14 +91,14 @@ MapButton = Button(root, text="MAP", command=MapFrame.lift, relief=FLAT)
 GraphButton = Button(root, text="GRAPH", command=GraphFrame.lift, relief=FLAT)
 
 # Creation of Home Page images + text
-title_image = Canvas(HomeFrame, height=300, width=1920,bg="aqua")
+title_image = Canvas(HomeFrame, height=300, width=width_px)
 titleimage_path = r"source\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
-image = image.resize((1920,300))
+image = image.resize((int(width_px*1.25),300))
 image = ImageTk.PhotoImage(image, master=root)
-title_image.create_image(600,150, image=image)
-title_image.create_rectangle(0, 0, 1920, 300, fill='grey', stipple='gray50')
-title_image.create_text(975, 150, width=1920, text="In the modern day, keeping countries accountable for the CO2 emissions "
+title_image.create_image(600*(width_px/1536),150*(height_px/864), image=image)
+title_image.create_rectangle(0, 0, width_px, 300*(height_px/864), fill='grey', stipple='gray50')
+title_image.create_text(805*(width_px/1536), 150*(height_px/864), width=width_px, text="In the modern day, keeping countries accountable for the CO2 emissions "
    "is becoming increasingly difficult.\n"
    "The main reason for this is that there are very few ways for the general public to understand the scope "
    "of their emissions. \n We aim to change that."
@@ -120,9 +120,8 @@ map_image.create_text(
 
 
 # Map Page Initialization
-CountryFrame = Frame(master=MapFrame, width=1400, height=800)
 continent_map()
-countryMap_image = Canvas(CountryFrame)
+countryMap_image = Canvas(MapFrame)
 countryMap_path = r"source\images\\continent_map.png"
 imageCountryMap = Image.open(countryMap_path, mode='r')
 imageCountryMap = imageCountryMap.resize((700, 525))
@@ -194,7 +193,7 @@ NA_Image = ImageTk.PhotoImage(NA_Image, master=root)
 
 # Map page buttons
 CanadaButton = Button(
-    CountryFrame,
+    MapFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -202,7 +201,7 @@ CanadaButton = Button(
     command=lambda: click(1),
     relief=FLAT)
 USAButton = Button(
-    CountryFrame,
+    MapFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -210,7 +209,7 @@ USAButton = Button(
     command=lambda: click(2),
     relief=FLAT)
 NA_Button = Button(
-    CountryFrame,
+    MapFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -219,9 +218,8 @@ NA_Button = Button(
     relief=FLAT)
 
 # Graph Page Initialization
-CountryFrameGraph = Frame(GraphFrame, width=1400, height=800)
 create_pie_countries([canada, usa, mexico])
-countryGraph_image = Canvas(CountryFrameGraph)
+countryGraph_image = Canvas(GraphFrame)
 countryGraph_path = "source\images/NA_pie.png"
 imageCountryGraph = Image.open(countryGraph_path, mode='r')
 imageCountryGraph = imageCountryGraph.resize((700, 525))
@@ -293,7 +291,7 @@ def clickGraph(number2):
 
 # Graph page buttons
 CanadaButtonGraph = Button(
-    CountryFrameGraph,
+    GraphFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -301,7 +299,7 @@ CanadaButtonGraph = Button(
     command=lambda: clickGraph(1),
     relief=FLAT)
 USAButtonGraph = Button(
-    CountryFrameGraph,
+    GraphFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -309,7 +307,7 @@ USAButtonGraph = Button(
     command=lambda: clickGraph(2),
     relief=FLAT)
 NA_ButtonGraph = Button(
-    CountryFrameGraph,
+    GraphFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -338,7 +336,7 @@ def graph_switch():
         ToggleImage = ToggleImage.resize((100, 100))
         ToggleImage = ImageTk.PhotoImage(ToggleImage, master=root)
         GraphToggle = Button(
-            CountryFrameGraph,
+            GraphFrame,
             compound=TOP,
             width=100,
             height=100,
@@ -356,7 +354,7 @@ def graph_switch():
         ToggleImage = ToggleImage.resize((100, 100))
         ToggleImage = ImageTk.PhotoImage(ToggleImage, master=root)
         GraphToggle = Button(
-            CountryFrameGraph,
+            GraphFrame,
             compound=TOP,
             width=100,
             height=100,
@@ -376,7 +374,7 @@ ToggleImage = Image.open(toggle_image, mode="r")
 ToggleImage = ToggleImage.resize((100, 100))
 ToggleImage = ImageTk.PhotoImage(ToggleImage, master=root)
 GraphToggle = Button(
-    CountryFrameGraph,
+    GraphFrame,
     compound=TOP,
     width=100,
     height=100,
@@ -402,14 +400,12 @@ map_image.place(relx=0.4,rely=0.5)
 NA_Button.place(relx=0.8, rely=0.7, relwidth=0.2, relheight=0.3)
 CanadaButton.place(relx=0.055, rely=0.7, relwidth=0.2, relheight=0.3)
 USAButton.place(relx=0.45, rely=0.7, relwidth=0.2, relheight=0.3)
-CountryFrame.place(x=0, y=0)
 
 # Graph Map page buttons
 NA_ButtonGraph.place(relx=0.8, rely=0.7, relwidth=0.2, relheight=0.3)
 CanadaButtonGraph.place(relx=0.055, rely=0.7, relwidth=0.2, relheight=0.3)
 USAButtonGraph.place(relx=0.45, rely=0.7, relwidth=0.2, relheight=0.3)
 GraphToggle.place(relx=0.055, rely=0.2, relwidth=0.1, relheight=0.15)
-CountryFrameGraph.place(x=0, y=0)
 
 # Set size of window
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(),
