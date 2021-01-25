@@ -86,14 +86,18 @@ MapButton = Button(root, text="MAP", command=MapFrame.lift, relief=FLAT)
 GraphButton = Button(root, text="GRAPH", command=GraphFrame.lift, relief=FLAT)
 
 # Creation of Home Page images + text
-title_image = Canvas(HomeFrame, height=300, width=300)
+title_image = Canvas(HomeFrame, height=300, width=1920,bg="aqua")
 titleimage_path = r"source\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
-image = image.resize((300, 300))
+image = image.resize((1920,300))
 image = ImageTk.PhotoImage(image, master=root)
-title_image.create_image(150, 150, image=image, anchor=CENTER)
-title_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray50')
-title_image.create_text(150, 150, width=300, text="In the modern day, keeping countries accountable for the CO2 emissions is becoming increasingly difficult. The main reason for this is that there are very few ways for the general public to understand the scope of their emissions. \n We aim to change that.")
+title_image.create_image(600,150, image=image)
+title_image.create_rectangle(0, 0, 1920, 300, fill='grey', stipple='gray50')
+title_image.create_text(975, 150, width=1920, text="In the modern day, keeping countries accountable for the CO2 emissions "
+   "is becoming increasingly difficult.\n"
+   "The main reason for this is that there are very few ways for the general public to understand the scope "
+   "of their emissions. \n We aim to change that."
+                        , font=("Helvetica",14))
 
 description = Label(text="Insert text here")
 map_image = Canvas(HomeFrame, height=300, width=300)
@@ -108,6 +112,7 @@ map_image.create_text(
     150,
     width=300,
     text="With the aim of reducing the effects of climate change, our application will provide statistical and visual methods of understanding the impact of some of the world's largest countries on Earth's climate, based on data from reputable sources. ")
+
 
 # Map Page Initialization
 CountryFrame = Frame(master=MapFrame, width=1400, height=800)
@@ -385,7 +390,7 @@ GraphButton.place(
 MapButton.place(relx=0.3333333333333333333333, x=1,
                 y=1, relwidth=0.3333333333333333333333)
 HomeButton.place(anchor=NW, x=1, y=1, relwidth=0.3333333333333333333333)
-title_image.place(relx=0.4)
+title_image.place(anchor=NW)
 map_image.place(relx=0.4,rely=0.5)
 
 # Places Map page buttons
