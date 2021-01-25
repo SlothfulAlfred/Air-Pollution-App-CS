@@ -91,7 +91,7 @@ MapButton = Button(root, text="MAP", command=MapFrame.lift, relief=FLAT)
 GraphButton = Button(root, text="GRAPH", command=GraphFrame.lift, relief=FLAT)
 
 # Creation of Home Page images + text
-title_image = Canvas(HomeFrame, height=300, width=width_px)
+title_image = Canvas(HomeFrame, height=300*(height_px/864), width=width_px)
 titleimage_path = r"source\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
 image = image.resize((int(width_px*1.25),300))
