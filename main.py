@@ -154,7 +154,7 @@ def click(number):
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
         countryMap_image.create_image(
             650, 350, image=imageCountryMap, anchor=CENTER)
-        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.075, rely=-0.1)
+        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.01, rely=-0.1)
     elif number == 2:
         # Generates map of USA
         region_map(usa)
@@ -164,7 +164,7 @@ def click(number):
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
         countryMap_image.create_image(
             650, 350, image=imageCountryMap, anchor=CENTER)
-        countryMap_image.place(width=1280, height=720, relx=0.075, rely=-0.1)
+        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.01, rely=-0.1)
     elif number == 3:
         # Generates map of North America
         continent_map()
@@ -174,7 +174,7 @@ def click(number):
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
         countryMap_image.create_image(
             650, 350, image=imageCountryMap, anchor=CENTER)
-        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.075, rely=-0.1)
+        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.01, rely=-0.1)
 
 
 # Buttons to select maps
@@ -256,7 +256,7 @@ def clickGraph(number2):
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.02, rely=-0.1)
     elif number2 == 2:
         if create_bar:
             countryGraph_path = r"source\images\\USA_bar.png"
@@ -272,7 +272,7 @@ def clickGraph(number2):
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.02, rely=-0.1)
     elif number2 == 3:
         countryGraph_path = r"source\images/NA_pie.png"
         if create_bar:
@@ -286,7 +286,7 @@ def clickGraph(number2):
         imageCountryGraph = Image.open(countryGraph_path, mode='r').resize((700, 525))
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.02, rely=-0.1)
 
 
 # Graph page buttons
@@ -344,7 +344,7 @@ def graph_switch():
             command=lambda: graph_switch(),
             relief=FLAT,
             image=ToggleImage)
-        GraphToggle.place(relx=0.055, rely=0.2, relwidth=0.1, relheight=0.15)
+        GraphToggle.place(relx=0.055, rely=0.2, relwidth=0, relheight=0.15)
         for i in range(len(country_list)):
             if countryGraph_path.find(country_list[i]) != -1:
                 clickGraph(i+1)
@@ -362,7 +362,7 @@ def graph_switch():
             command=lambda: graph_switch(),
             relief=FLAT,
             image=ToggleImage)
-        GraphToggle.place(relx=0.055, rely=0.2, relwidth=0.1, relheight=0.15)
+        GraphToggle.place(relx=0.055, rely=0.2, relwidth=0, relheight=0.15)
         for i in range(len(country_list)):
             if countryGraph_path.find(country_list[i]) != -1:
                 clickGraph(i+1)
@@ -397,14 +397,14 @@ title_image.place(anchor=NW)
 map_image.place(relx=0.4,rely=0.5)
 
 # Places Map page buttons
-NA_Button.place(relx=0.8, rely=0.7, relwidth=0.2, relheight=0.3)
-CanadaButton.place(relx=0.055, rely=0.7, relwidth=0.2, relheight=0.3)
-USAButton.place(relx=0.45, rely=0.7, relwidth=0.2, relheight=0.3)
+NA_Button.place(relx=0.77, rely=0.75, relwidth=0.18, relheight=0.27)
+CanadaButton.place(relx=0.05, rely=0.75, relwidth=0.18, relheight=0.27)
+USAButton.place(relx=0.40, rely=0.75, relwidth=0.18, relheight=0.27)
 
 # Graph Map page buttons
-NA_ButtonGraph.place(relx=0.8, rely=0.7, relwidth=0.2, relheight=0.3)
-CanadaButtonGraph.place(relx=0.055, rely=0.7, relwidth=0.2, relheight=0.3)
-USAButtonGraph.place(relx=0.45, rely=0.7, relwidth=0.2, relheight=0.3)
+NA_ButtonGraph.place(relx=0.77, rely=0.75, relwidth=0.18, relheight=0.27)
+CanadaButtonGraph.place(relx=0.05, rely=0.75, relwidth=0.18, relheight=0.27)
+USAButtonGraph.place(relx=0.40, rely=0.75, relwidth=0.18, relheight=0.27)
 GraphToggle.place(relx=0.055, rely=0.2, relwidth=0.1, relheight=0.15)
 
 # Set size of window
