@@ -180,7 +180,7 @@ def click(number):
 # Buttons to select maps
 Canada_path = "source\\images\\canada.png"
 CanadaImage = Image.open(Canada_path, mode="r")
-CanadaImage = CanadaImage.resize((270, 135))
+CanadaImage = CanadaImage.resize((int(width_px*0.25), 135))
 CanadaImage = ImageTk.PhotoImage(CanadaImage, master=root)
 USA_path = "source\\images\\USA.png"
 USAImage = Image.open(USA_path, mode="r")
@@ -293,16 +293,16 @@ def clickGraph(number2):
 CanadaButtonGraph = Button(
     GraphFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/1536),
     image=CanadaImage,
     command=lambda: clickGraph(1),
     relief=FLAT)
 USAButtonGraph = Button(
     GraphFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/1536),
     image=USAImage,
     command=lambda: clickGraph(2),
     relief=FLAT)
