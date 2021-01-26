@@ -127,7 +127,7 @@ imageCountryMap = Image.open(countryMap_path, mode='r')
 imageCountryMap = imageCountryMap.resize((700, 525))
 imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
 countryMap_image.create_image(650, 350, image=imageCountryMap, anchor=CENTER)
-countryMap_image.place(width=1280, height=720, relx=0.075, rely=-0.1)
+countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.075, rely=-0.1)
 
 
 # Function which loads the desired map
@@ -154,7 +154,7 @@ def click(number):
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
         countryMap_image.create_image(
             650, 350, image=imageCountryMap, anchor=CENTER)
-        countryMap_image.place(width=1280, height=720, relx=0.075, rely=-0.1)
+        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.075, rely=-0.1)
     elif number == 2:
         # Generates map of USA
         region_map(usa)
@@ -174,7 +174,7 @@ def click(number):
         imageCountryMap = ImageTk.PhotoImage(imageCountryMap, master=root)
         countryMap_image.create_image(
             650, 350, image=imageCountryMap, anchor=CENTER)
-        countryMap_image.place(width=1280, height=720, relx=0.075, rely=-0.1)
+        countryMap_image.place(relwidth=1280/1536, relheight=720/864, relx=0.075, rely=-0.1)
 
 
 # Buttons to select maps
@@ -225,7 +225,7 @@ imageCountryGraph = Image.open(countryGraph_path, mode='r')
 imageCountryGraph = imageCountryGraph.resize((700, 525))
 imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
 countryGraph_image.create_image(650, 350, image=imageCountryGraph, anchor=CENTER)
-countryGraph_image.place(width=1280, height=720, relx=-0.2, rely=0.1)
+countryGraph_image.place(relwidth=1280/1536, height=720/864, relx=-0.2, rely=0.1)
 
 
 # Function which loads the desired graph
@@ -256,7 +256,7 @@ def clickGraph(number2):
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(width=1280, height=720, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
     elif number2 == 2:
         if create_bar:
             countryGraph_path = r"source\images\\USA_bar.png"
@@ -272,7 +272,7 @@ def clickGraph(number2):
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(width=1280, height=720, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
     elif number2 == 3:
         countryGraph_path = r"source\images/NA_pie.png"
         if create_bar:
@@ -286,7 +286,7 @@ def clickGraph(number2):
         imageCountryGraph = Image.open(countryGraph_path, mode='r').resize((700, 525))
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(600, 350, image=imageCountryGraph, anchor=CENTER)
-        countryGraph_image.place(width=1280, height=720, relx=0.119, rely=-0.1)
+        countryGraph_image.place(relwidth=1280/1536, relheight=720/864, relx=0.119, rely=-0.1)
 
 
 # Graph page buttons
