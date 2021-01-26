@@ -195,24 +195,24 @@ NA_Image = ImageTk.PhotoImage(NA_Image, master=root)
 CanadaButton = Button(
     MapFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/864),
     image=CanadaImage,
     command=lambda: click(1),
     relief=FLAT)
 USAButton = Button(
     MapFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/864),
     image=USAImage,
     command=lambda: click(2),
     relief=FLAT)
 NA_Button = Button(
     MapFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/864),
     image=NA_Image,
     command=lambda: click(3),
     relief=FLAT)
@@ -294,7 +294,7 @@ CanadaButtonGraph = Button(
     GraphFrame,
     compound=TOP,
     width=100*(width_px/1536),
-    height=100*(height_px/1536),
+    height=100*(height_px/864),
     image=CanadaImage,
     command=lambda: clickGraph(1),
     relief=FLAT)
@@ -302,15 +302,15 @@ USAButtonGraph = Button(
     GraphFrame,
     compound=TOP,
     width=100*(width_px/1536),
-    height=100*(height_px/1536),
+    height=100*(height_px/864),
     image=USAImage,
     command=lambda: clickGraph(2),
     relief=FLAT)
 NA_ButtonGraph = Button(
     GraphFrame,
     compound=TOP,
-    width=100,
-    height=100,
+    width=100*(width_px/1536),
+    height=100*(height_px/864),
     image=NA_Image,
     command=lambda: clickGraph(3),
     relief=FLAT)
@@ -338,8 +338,8 @@ def graph_switch():
         GraphToggle = Button(
             GraphFrame,
             compound=TOP,
-            width=100,
-            height=100,
+            width=100*(width_px/1536),
+            height=100*(height_px/864),
             text="Switch Graph Types",
             command=lambda: graph_switch(),
             relief=FLAT,
@@ -356,8 +356,8 @@ def graph_switch():
         GraphToggle = Button(
             GraphFrame,
             compound=TOP,
-            width=100,
-            height=100,
+            width=100*(width_px/1536),
+            height=100*(height_px/864),
             text="Switch Graph Types",
             command=lambda: graph_switch(),
             relief=FLAT,
