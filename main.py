@@ -273,7 +273,7 @@ def clickGraph(number2):
             create_pie_regions(canada)
         imageCountryGraph = Image.open(
             countryGraph_path, mode='r').resize(
-            (700, 525))
+            (665, int(498*(height_px/864))))
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
@@ -289,7 +289,7 @@ def clickGraph(number2):
             create_pie_regions(usa)
         imageCountryGraph = Image.open(
             countryGraph_path, mode='r').resize(
-            (700, 525))
+            (665, int(498*(height_px/864))))
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
         countryGraph_image.create_image(
             600, 350, image=imageCountryGraph, anchor=CENTER)
