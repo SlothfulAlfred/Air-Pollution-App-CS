@@ -30,9 +30,6 @@ import webbrowser  # Use to create footer that will link back to GitHub
 root = Tk()
 height_px = root.winfo_screenheight()
 width_px = root.winfo_screenwidth()
-print(width_px)
-print(height_px)
-
 
 # Initialize Country objects used for maps and graphs
 canada = Country("docs/canada.txt")
@@ -104,7 +101,6 @@ title_image.create_text(805*(width_px/1536), 150*(height_px/864), width=width_px
    "of their emissions. \n We aim to change that."
                         , font=("Helvetica",14))
 
-description = Label(text="Insert text here")
 map_image = Canvas(HomeFrame, height=300, width=300)
 mapimage_path = r'source\images\mapimage.jpg'
 image2 = Image.open(mapimage_path, mode="r")
