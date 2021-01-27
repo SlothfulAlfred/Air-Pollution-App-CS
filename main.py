@@ -12,8 +12,10 @@
 #                   for Canadian and American values respectively.
 # ----------------------------------------------------
 import os
+
 from tkinter import *
 from tkinter import messagebox
+import tkinter.font as tkFont
 from source.helpers.country import Country
 from source.helpers.region import Region
 from source.helpers.country_map_generator import region_map
@@ -53,6 +55,9 @@ Footer_path = r"source\images\\footer.png"
 Footer = Image.open(Footer_path, mode="r")
 Footer = Footer.resize((19, 19))
 Footer = ImageTk.PhotoImage(Footer)
+
+helv24 = tkFont.Font(family='Helvetica',
+        size=24)
 
 def popup():
     '''
@@ -112,7 +117,27 @@ map_image.create_text(
     150,
     150,
     width=300,
-    text="With the aim of reducing the effects of climate change, our application will provide statistical and visual methods of understanding the impact of some of the world's largest countries on Earth's climate, based on data from reputable sources. ")
+    text="See what regions in North America have the greatest levels of pollution.")
+
+stat = Canvas(HomeFrame, height=100, width=600)
+stat.create_rectangle(0, 0, width_px, 200, fill='grey', stipple='gray50')
+stat.create_text(325,70,
+    text="Statistics for over 60 states,\n provinces and territories",font=helv24)
+stat.create_text(1209,70,
+    text="Open Source with \n long-term support plans",font=helv24)
+
+graph_image = Canvas(HomeFrame, height=300, width=300)
+graphimage_path = r'source\images\graphimage.png'
+image3 = Image.open(graphimage_path, mode="r")
+image3 = image3.resize((300, 300))
+image3 = ImageTk.PhotoImage(image3, master=root)
+graph_image.create_image(150, 150, image=image3, anchor=CENTER)
+graph_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray50')
+graph_image.create_text(
+    150,
+    150,
+    width=300,
+    text="View the carbon emissions of North America and it's consituent countries as graphs: pie or bar charts are currently available.")
 
 
 # Map Page Initialization
@@ -390,7 +415,9 @@ MapButton.place(relx=0.3333333333333333333333, x=1,
                 y=1, relwidth=0.3333333333333333333333)
 HomeButton.place(anchor=NW, x=1, y=1, relwidth=0.3333333333333333333333)
 title_image.place(anchor=NW)
-map_image.place(relx=0.4,rely=0.5)
+stat.place(rely=0.4,relwidth=1,relx =0,relheight=0.2)
+map_image.place(relx=0.1,rely=0.6)
+graph_image.place(relx=0.7,rely=0.6)
 
 # Places Map page buttons
 NA_Button.place(relx=0.77, rely=0.75, relwidth=0.18, relheight=0.27)
