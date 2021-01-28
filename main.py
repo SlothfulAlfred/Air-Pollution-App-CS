@@ -1,12 +1,12 @@
 # -----------------------------------------------------
-# Name:             Air Pollution App (main.py)
+# Name:             NA CO2 Tracker (main.py)
 # Purpose:          To create an app to raise awareness about climate change and air pollution in North America
 #
 #
 #
-# Author:           Alfred Mikhael, 627582
+# Author:           Alfred Mikhael, 627582: Rishabh Tamhane, 813403: Johann Zhao, 620988
 # Created:          27-Sep-2020
-# Updated:          4-Dec-2020
+# Updated:          29-Jan-2021
 # References:       All coordinate data is taken from https://www.latlong.net/category/states-236-14.html.
 #                   Greenhouse gas statistics are taken from Stats Canada or US Energy Information Administration
 #                   for Canadian and American values respectively.
@@ -44,7 +44,7 @@ graphDelete('source/images/')
 create_bar = True
 
 # Initializing of title and icon image
-root.title('Air Pollution App')
+root.title('NA CO2 Tracker')
 Icon_path = r"source\images\\icon.png"
 Icon = Image.open(Icon_path, mode="r")
 Icon = ImageTk.PhotoImage(file=Icon_path, master=root)
@@ -93,18 +93,29 @@ MapButton = Button(root, text="MAP", command=MapFrame.lift, relief=FLAT)
 GraphButton = Button(root, text="GRAPH", command=GraphFrame.lift, relief=FLAT)
 
 # Creation of Home Page images + text
+
+title = Canvas(HomeFrame, height=300*(height_px/864), width=width_px)
+title.create_text(795*(width_px/1536), 150*(height_px/864), text="NA CO2 Tracker"
+                        ,font=("Helvetica",35))
+
+credit = Canvas(HomeFrame,height=50*(height_px/864), width=400*(width_px/1536))
+credit.create_text(200*(width_px/1536), 15*(height_px/864), text="Made by: Alfred Mikhael, Rishabh Tamhane, Johann Zhao")
+credit.place(anchor=S,relx=0.48,rely=1.005)
+
 title_image = Canvas(HomeFrame, height=300*(height_px/864), width=width_px)
 titleimage_path = r"source\images\\titleimage.png"
 image = Image.open(titleimage_path, mode="r")
-image = image.resize((int(width_px*1.25),300))
+image = image.resize((int(width_px*1.25),int(300*(height_px/864))))
 image = ImageTk.PhotoImage(image, master=root)
 title_image.create_image(600*(width_px/1536),150*(height_px/864), image=image)
-title_image.create_rectangle(0, 0, width_px, 300*(height_px/864), fill='grey', stipple='gray50')
-title_image.create_text(805*(width_px/1536), 150*(height_px/864), width=width_px, text="In the modern day, keeping countries accountable for the CO2 emissions "
-   "is becoming increasingly difficult.\n"
-   "The main reason for this is that there are very few ways for the general public to understand the scope "
-   "of their emissions. \n We aim to change that."
+title_image.create_rectangle(0, 0, width_px, int(300*(height_px/864)), fill='grey', stipple='gray50')
+title_image.create_text(750*(width_px/1536), 100*(height_px/864), width=width_px-50, text="An application that graphically and geographically displays CO2 emissions of Canada and the USA. With the aim of reducing the effects of climate change, " \
+"our application will provide statistical and visual methods of understanding the impact of some of the world's largest CO2 emitting countries on Earth's climate, based on data from reputable sources. \n Started: Nov 30, 2020."
                         , font=("Helvetica",14))
+
+intro = Canvas(HomeFrame, height=300*(height_px/864), width=500*(width_px/1536))
+intro.create_text( 250,150,width=500,
+text = "In the modern day, keeping countries accountable for the CO2 emissions is becoming increasingly difficult. CO2 levels are currently significantly higher than at any point in the past 800,000 years and since 1980, they have increased 22% at a consistent rate. In North America, Canada and the US are huge contributors to this global issue, as their CO2 emissions per capita are significantly higher than other coutnries. Despite being only the 3rd and 39th most populous country in the world, they produce the 2nd and 11th most CO2 emissions. Overall, the main reason for this is that there are very few ways for the general public to understand the scope of their emissions. We aim to change that.")
 
 map_image = Canvas(HomeFrame, height=300, width=300)
 mapimage_path = r'source\images\mapimage.jpg'
@@ -120,10 +131,9 @@ map_image.create_text(
     text="See what regions in North America have the greatest levels of pollution.")
 
 stat = Canvas(HomeFrame, height=100, width=600)
-stat.create_rectangle(0, 0, width_px, 200, fill='grey', stipple='gray50')
 stat.create_text(325,70,
     text="Statistics for over 60 states,\n provinces and territories",font=helv24)
-stat.create_text(1209,70,
+stat.create_text(1000,70,
     text="Open Source with \n long-term support plans",font=helv24)
 
 graph_image = Canvas(HomeFrame, height=300, width=300)
@@ -414,9 +424,11 @@ GraphButton.place(
 MapButton.place(relx=0.3333333333333333333333, x=1,
                 y=1, relwidth=0.3333333333333333333333)
 HomeButton.place(anchor=NW, x=1, y=1, relwidth=0.3333333333333333333333)
-title_image.place(anchor=NW)
+title.place(anchor = N,relx=0.495,rely=-0.1)
+title_image.place(anchor=NW,rely = 0.15)
 stat.place(rely=0.4,relwidth=1,relx =0,relheight=0.2)
-map_image.place(relx=0.1,rely=0.6)
+intro.place(relx=0.05,rely=0.5)
+map_image.place(relx=0.4,rely=0.5)
 graph_image.place(relx=0.7,rely=0.6)
 
 # Places Map page buttons
