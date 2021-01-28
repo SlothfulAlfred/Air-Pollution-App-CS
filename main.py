@@ -269,7 +269,7 @@ def clickGraph(number2):
             countryGraph_path = r"source\images\Canada_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_regions(canada)
-        if not os.path.isfile(countryGraph_path) and create_bar == False:
+        if not os.path.isfile(countryGraph_path) and not create_bar:
             create_pie_regions(canada)
         imageCountryGraph = Image.open(
             countryGraph_path, mode='r').resize(
@@ -285,7 +285,7 @@ def clickGraph(number2):
             countryGraph_path = r"source\images/USA_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_regions(usa)
-        if not os.path.isfile(countryGraph_path) and create_bar == False:
+        if not os.path.isfile(countryGraph_path) and not create_bar:
             create_pie_regions(usa)
         imageCountryGraph = Image.open(
             countryGraph_path, mode='r').resize(
@@ -302,7 +302,7 @@ def clickGraph(number2):
             countryGraph_path = "source\images/NA_pie.png"
         if not os.path.isfile(countryGraph_path) and create_bar:
             create_bar_countries([canada, usa, mexico])
-        if not os.path.isfile(countryGraph_path) and create_bar == False:
+        if not os.path.isfile(countryGraph_path) and not create_bar:
             create_pie_countries([canada, usa, mexico])
         imageCountryGraph = Image.open(countryGraph_path, mode='r').resize((700, 525))
         imageCountryGraph = ImageTk.PhotoImage(imageCountryGraph, master=root)
