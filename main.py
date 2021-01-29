@@ -79,6 +79,13 @@ footer = Button(
     relief=FLAT)
 footer.place(relwidth=0.08, relheight=0.0277777777777778, rely=0.9525, relx=0.921)
 
+tips = Button(
+    text="What Can I Do?",
+    compound=LEFT,
+    command=lambda: webbrowser.open("Actions.txt"),
+    relief=FLAT)
+tips.place(relwidth=0.08, relheight=0.0277777777777778, rely=0.9525, relx=0.01)
+
 # Generating Home, Map and Graph pages
 GraphFrame = Frame(root)
 GraphFrame.place(anchor=CENTER, relx=0.5, rely=0.5, relwidth=1, relheight=0.9)
