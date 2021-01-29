@@ -117,7 +117,7 @@ image = ImageTk.PhotoImage(image, master=root)
 title_image.create_image(600*(width_px/1536),150*(height_px/864), image=image)
 title_image.create_rectangle(0, 0, width_px, int(300*(height_px/864)), fill='grey', stipple='gray75')
 title_image.create_text(750*(width_px/1536), 100*(height_px/864), width=width_px-50, text="An application that graphically and geographically displays CO2 emissions of Canada and the USA. With the aim of reducing the effects of climate change, " \
-"our application will provide statistical and visual methods of understanding the impact of some of the world's largest CO2 emitting countries on Earth's climate, based on data from reputable sources. \n Started: Nov 30, 2020."
+"our application will provide statistical and visual methods of understanding the impact of some of the world's largest CO2 emitting countries on the Earth's climate, based on data from reputable sources. \n Started: Nov 30, 2020."
                         , font=("Helvetica",14))
 
 intro = Canvas(HomeFrame, height=300*(height_px/864), width=550*(width_px/1536))
