@@ -105,9 +105,9 @@ title = Canvas(HomeFrame, height=300*(height_px/864), width=width_px)
 title.create_text(795*(width_px/1536), 150*(height_px/864), text="NA CO2 Tracker"
                         ,font=("Helvetica",35))
 
-credit = Canvas(HomeFrame,height=50*(height_px/864), width=400*(width_px/1536))
+credit = Canvas(height=50*(height_px/864), width=400*(width_px/1536))
 credit.create_text(200*(width_px/1536), 15*(height_px/864), text="Made by: Alfred Mikhael, Rishabh Tamhane, Johann Zhao")
-credit.place(anchor=S,relx=0.48,rely=1.005)
+credit.place(anchor=S, relx=0.48, rely=1.02)
 
 title_image = Canvas(HomeFrame, height=300*(height_px/864), width=width_px)
 titleimage_path = r"source\images\\titleimage.png"
@@ -115,13 +115,13 @@ image = Image.open(titleimage_path, mode="r")
 image = image.resize((int(width_px*1.25),int(300*(height_px/864))))
 image = ImageTk.PhotoImage(image, master=root)
 title_image.create_image(600*(width_px/1536),150*(height_px/864), image=image)
-title_image.create_rectangle(0, 0, width_px, int(300*(height_px/864)), fill='grey', stipple='gray50')
+title_image.create_rectangle(0, 0, width_px, int(300*(height_px/864)), fill='grey', stipple='gray75')
 title_image.create_text(750*(width_px/1536), 100*(height_px/864), width=width_px-50, text="An application that graphically and geographically displays CO2 emissions of Canada and the USA. With the aim of reducing the effects of climate change, " \
 "our application will provide statistical and visual methods of understanding the impact of some of the world's largest CO2 emitting countries on Earth's climate, based on data from reputable sources. \n Started: Nov 30, 2020."
                         , font=("Helvetica",14))
 
-intro = Canvas(HomeFrame, height=300*(height_px/864), width=500*(width_px/1536))
-intro.create_text( 250,150,width=500,
+intro = Canvas(HomeFrame, height=300*(height_px/864), width=550*(width_px/1536))
+intro.create_text( 250,150,width=450,
 text = "In the modern day, keeping countries accountable for the CO2 emissions is becoming increasingly difficult. CO2 levels are currently significantly higher than at any point in the past 800,000 years and since 1980, they have increased 22% at a consistent rate. In North America, Canada and the US are huge contributors to this global issue, as their CO2 emissions per capita are significantly higher than other coutnries. Despite being only the 3rd and 39th most populous country in the world, they produce the 2nd and 11th most CO2 emissions. Overall, the main reason for this is that there are very few ways for the general public to understand the scope of their emissions. We aim to change that.")
 
 map_image = Canvas(HomeFrame, height=300, width=300)
@@ -130,7 +130,7 @@ image2 = Image.open(mapimage_path, mode="r")
 image2 = image2.resize((300, 300))
 image2 = ImageTk.PhotoImage(image2, master=root)
 map_image.create_image(150, 150, image=image2, anchor=CENTER)
-map_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray50')
+map_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray75')
 map_image.create_text(
     150,
     150,
@@ -149,7 +149,7 @@ image3 = Image.open(graphimage_path, mode="r")
 image3 = image3.resize((300, 300))
 image3 = ImageTk.PhotoImage(image3, master=root)
 graph_image.create_image(150, 150, image=image3, anchor=CENTER)
-graph_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray50')
+graph_image.create_rectangle(0, 0, 300, 300, fill='grey', stipple='gray75')
 graph_image.create_text(
     150,
     150,
@@ -434,8 +434,8 @@ HomeButton.place(anchor=NW, x=1, y=1, relwidth=0.3333333333333333333333)
 title.place(anchor = N,relx=0.495,rely=-0.1)
 title_image.place(anchor=NW,rely = 0.15)
 stat.place(rely=0.4,relwidth=1,relx =0,relheight=0.2)
-intro.place(relx=0.05,rely=0.5)
-map_image.place(relx=0.4,rely=0.5)
+intro.place(relx=0.0,rely=0.5)
+map_image.place(relx=0.4,rely=0.6)
 graph_image.place(relx=0.7,rely=0.6)
 
 # Places Map page buttons
